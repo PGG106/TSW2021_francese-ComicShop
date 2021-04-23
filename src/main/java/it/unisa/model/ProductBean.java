@@ -9,7 +9,7 @@ public class ProductBean implements Serializable {
 		
 		int id;
 		String nome;
-		int prezzo;
+		float prezzo;
 		int saldo;
 		LocalDate data_uscita;
 		float voto;
@@ -50,13 +50,13 @@ public class ProductBean implements Serializable {
 		}
 
 
-		public int getPrezzo() {
+		public float getPrezzo() {
 			return prezzo;
 		}
 
 
-		public void setPrezzo(int prezzo) {
-			this.prezzo = prezzo;
+		public void setPrezzo(float f) {
+			this.prezzo = f;
 		}
 
 
