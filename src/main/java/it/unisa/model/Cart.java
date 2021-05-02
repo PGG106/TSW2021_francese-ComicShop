@@ -71,7 +71,10 @@ public class Cart {
 		products.add(newOrder);
 	}
 
-
+public void EmptyCart()
+{
+	products = new ArrayList<ItemOrder>();
+}
 
 	public List<ItemOrder> getProducts() {
 		return products;
