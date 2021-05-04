@@ -50,6 +50,7 @@ public class ProductControl extends HttpServlet {
 					int id = Integer.parseInt(request.getParameter("id"));
 					request.removeAttribute("product");
 					request.setAttribute("product", model.doRetrieveByKey(id));
+					response.sendRedirect("details.jsp");
 				} else if (action.equalsIgnoreCase("delete")) {
 					int id = Integer.parseInt(request.getParameter("id"));
 					model.doDelete(id);
@@ -95,7 +96,7 @@ public class ProductControl extends HttpServlet {
 		}
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ProductView.jsp");
-		dispatcher.forward(request, response);
+		dispatcher.include(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

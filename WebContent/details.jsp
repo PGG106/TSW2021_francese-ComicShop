@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.Cart, it.unisa.model.ItemOrder"%>
+
     
 <%
 	Collection<?> products = (Collection<?>) request.getAttribute("products");
@@ -15,7 +15,6 @@
 
 <!DOCTYPE html>
 <html>
-<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.Cart, it.unisa.model.ItemOrder"%>
 <head>
 <meta charset="ISO-8859-1">
 <title>Dettagli</title>
@@ -35,7 +34,7 @@
 			<th>Voto</th>
 			<th>Descrizione</th>
 			<th>Peso</th>
-			<th>Quantità</th>
+			<th>QuantitÃ </th>
 		</tr>
 		<tr>
 			<td><%=product.getId()%></td>
@@ -46,7 +45,7 @@
 			<td><%=product.getVoto()%></td>
 			<td><%=product.getDescrizione()%></td>
 			<td><%=product.getPeso()%></td>
-			<td><%=product.getQuantità()%></td>
+			<td><%=product.getQuantitÃ ()%></td>
 		</tr>
 	</table>
 	<%
