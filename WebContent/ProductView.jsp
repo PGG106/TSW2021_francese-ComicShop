@@ -43,7 +43,6 @@
 			<td><%=bean.getId()%></td>
 			<td><%=bean.getNome()%></td>
 			<td><%=bean.getPrezzo()%></td>
-			<td><%=%></td>
 			<td><a href="product?action=read&id=<%=bean.getId()%>">Dettagli</a><br>
 				<a href="product?action=addC&id=<%=bean.getId()%>">Aggiungi al carrello</a>
 				</td>

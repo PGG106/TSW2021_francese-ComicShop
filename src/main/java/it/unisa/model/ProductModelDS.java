@@ -22,7 +22,7 @@ public class ProductModelDS implements ProductModel {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 
-			ds = (DataSource) envCtx.lookup("jdbc/storage");
+			ds = (DataSource) envCtx.lookup("jdbc/comicshop");
 
 		} catch (NamingException e) {
 			System.out.println("Error:" + e.getMessage());
