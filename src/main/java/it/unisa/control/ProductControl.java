@@ -54,15 +54,17 @@ public class ProductControl extends HttpServlet {
 					int id = Integer.parseInt(request.getParameter("id"));
 					model.doDelete(id);
 				} else if (action.equalsIgnoreCase("insert")) {
+					
+					
 					int id = Integer.parseInt(request.getParameter("id"));
 					String nome = request.getParameter("nome");
 					float prezzo = Float.parseFloat(request.getParameter("prezzo"));
 					int saldo = Integer.parseInt(request.getParameter("saldo"));
-					LocalDate data_uscita = LocalDate.parse(request.getParameter("data_uscita"));
+					LocalDate data_uscita = LocalDate.parse(request.getParameter("data"));
 					float voto = Float.parseFloat(request.getParameter("voto"));
 					String descrizione = request.getParameter("descrizione");
 					float peso = Float.parseFloat(request.getParameter("peso"));
-					int quantità = Integer.parseInt(request.getParameter("quantità"));
+					int quantità = Integer.parseInt(request.getParameter("quant"));
 					ProductBean bean = new ProductBean();
 					bean.setId(id);
 					bean.setNome(nome);

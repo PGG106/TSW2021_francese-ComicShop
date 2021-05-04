@@ -7,31 +7,27 @@ import java.util.List;
 
 
 public class Cart {
-	ProductModelDS model;
+	ProductModelDS model= new ProductModelDS();
 	private List<ItemOrder> products;
 
 	public Cart() {
 		products = new ArrayList<ItemOrder>();
 	}
 
-	public void addProduct(int itemID) {
+	public void addProduct(int itemID) throws SQLException {
 
 		ItemOrder order;
-		for (int i = 0; i < products.size(); i++) {
-			order = (ItemOrder) products.get(i);
+		for (int i = 1; i <= products.size(); i++) {
+			order = (ItemOrder) products.get(i-1);
 			if (order.getId() == itemID) {
 				order.incrementNumItems();
 				return;
 			}
 		}
 		ItemOrder newOrder ;
-		try {
-			newOrder = new ItemOrder(model.doRetrieveByKey(itemID));
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return;
-		}
+		ProductBean bean= model.doRetrieveByKey(itemID);
+		newOrder = new ItemOrder(bean);	
+		
 		products.add(newOrder);
 
 	}
