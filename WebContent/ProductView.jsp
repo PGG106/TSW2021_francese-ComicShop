@@ -3,10 +3,7 @@
 
 <%
 	Collection<?> products = (Collection<?>) request.getAttribute("products");
-	if(products == null) {
-		response.sendRedirect("./product");	
-		return;
-	}
+	
 	
 	ProductBean product = (ProductBean) request.getAttribute("product");
 	
