@@ -26,18 +26,18 @@ Cart cart = (Cart) request.getAttribute("cart");
 
 <body>
 	<div style="clear: right; float: right; text-align: right;">
-		<br /> <a href="cart.jsp"> visualizza Carrello</a> <br />
+		<br /> <a href="cart.jsp"> Visualizza Carrello</a> <br />
 	</div>
 	<h2>Prodotti</h2>
 	<a href="product">Lista</a>
 	<table border="1">
 		<tr>
-			<th>Id <a href="product?sort=id">Ordina</a></th>
-			<th>Nome <a href="product?sort=nome">Ordina</a></th>
-			<th>Prezzo <a href="product?sort=prezzo">Ordina</a></th>
-			<th>Voto <a href="product?sort=voto">Ordina</a></th>
-			<th>Quantita' <a href="product?sort=quantita">Ordina</a></
-			<th>Action</th>
+			<th> <a href="product?sort=id">Id </a></th>
+			<th> <a href="product?sort=nome">Nome</a></th>
+			<th> <a href="product?sort=prezzo">Prezzo</a></th>
+			<th> <a href="product?sort=voto">Voto</a></th>
+			<th> <a href="product?sort=quantita">Quantita'</a></th>
+			<th> Azioni</th>
 		</tr>
 		<%
 		if (products != null && products.size() != 0) {
@@ -99,6 +99,5 @@ Cart cart = (Cart) request.getAttribute("cart");
 
 
 
-	<a href="cart.jsp">visualizza Carrello</a>
 </body>
 </html>
