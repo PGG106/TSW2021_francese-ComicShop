@@ -3,7 +3,10 @@
 
 <%
 	Collection<?> products = (Collection<?>) request.getAttribute("products");
-	
+	if(products == null) {
+		response.sendRedirect("./product");	
+		return;
+	}
 	
 	ProductBean product = (ProductBean) request.getAttribute("product");
 	
@@ -21,6 +24,11 @@
 </head>
 
 <body>
+<div style = "clear: right; float: right; text-align: right;">
+      <br />
+     <a href="cart.jsp"> visualizza Carrello</a>
+      <br /> 
+      </div>
 	<h2>Prodotti</h2>
 	<a href="product">Lista</a>
 	<table border="1">
@@ -90,22 +98,8 @@
 		<input type="submit" value="Add"><input type="reset" value="Reset">
 	</form>
 	
-	<% if(cart != null) { %>
-		<h2>Cart</h2>
-		<table border="1">
-		<tr>
-			<th>Name</th>
-			<th>Action</th>
-		</tr>
-		<% List<ItemOrder> prodcart = cart.getProducts(); 	
-		   for(ItemOrder beancart: prodcart) {
-		%>
-		<tr>
-			<td><%=beancart.getItem().toString()  %>,<%=beancart.getNumItems() %></td>
-			<td><a href="product?action=deleteC&id=<%=beancart.getId()%>">Elimina dal carrello</a></td>
-		</tr>
-		<%} %>
-	</table>		
-	<% } %>	
+	
+	
+	<a href="cart.jsp">visualizza Carrello</a>
 </body>
 </html>
