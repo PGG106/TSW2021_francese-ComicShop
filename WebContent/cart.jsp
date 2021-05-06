@@ -9,12 +9,30 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Carrello</title>
+	<style>
+	table {
+  		margin-left:auto;
+ 		margin-right:auto;
+ 		border: 1px solid black;
+ 		border-collapse: collapse;
+		}
+	th, td {
+  		padding: 5px;
+  		border: 1px solid black;
+  		border-collapse: collapse;
+	}
+	td {
+  		text-align: left;
+  		border-spacing: 10px;
+	}
+	h2 {
+		text-align: center;
+	}
+	</style>
 </head>
 <body>
 
 <%
-
-	
 	Cart cart = (Cart) session.getAttribute("cart");
 %>
 
@@ -22,11 +40,17 @@
 if (cart != null) {
 %>
 	<h2>Carrello</h2>
-	<table border="1">
+	<table>
+	<colgroup>
+    	<col span="1" style="width:1px;">
+    	<col span="1" style="width:1px;">
+        <col span="1" style="width:1px;">
+        <col span="1" style="width:1px;">
+ 	</colgroup>
 	<tr>
 		<th>Articolo:</th>
-		<th>Prezzo:</th>
 		<th>Quantità:</th>
+		<th>Prezzo:</th>
 		<th>Azioni</th>
 	</tr>
 	<%
@@ -36,8 +60,8 @@ if (cart != null) {
 
 	<tr>
 		<td><%=beancart.getNome()%></td>
-		<td><%=beancart.getPrezzo()%> Euro</td>
-		<td>  <input type=number value=<%=beancart.getNumItems() %>></td>
+		<td>  <input type=number value=<%=beancart.getNumItems()%>></td>
+		<td><%=beancart.getTotalCost()%> Euro</td>
 		<td><a href="product?action=deleteC&id=<%=beancart.getId()%>">Elimina
 				dal carrello</a></td>
 	</tr>

@@ -22,15 +22,39 @@ Cart cart = (Cart) request.getAttribute("cart");
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="ProductStyle.css" rel="stylesheet" type="text/css">
 <title>Catalogo</title>
+	<style>
+	table {
+  		margin-left:auto;
+ 		margin-right:auto;
+ 	}
+	table, th, td {
+  		border: 1px solid black;
+  		border-collapse: collapse;
+	}
+	th, td {
+  		padding: 5px;
+	}
+	td {
+  		text-align: left;
+  		border-spacing: 10px;
+	}
+	h2 {
+		text-align: center;
+		clear: both;
+	}
+	</style>
 </head>
 
 <body>
+
 	<div style="clear: right; float: right; text-align: right;">
-		<br /> <a href="cart.jsp"> Visualizza Carrello</a> <br />
+		<br/><br> <a href="cart.jsp"> Visualizza Carrello</a><br/>
 	</div>
+	
 	<h2>Prodotti</h2>
-	<a href="product">Lista</a>
-	<table border="1">
+	<a style="text-align:center" href="product">Lista</a>
+	
+	<table>
 		<tr>
 			<th> <a href="product?sort=id">Id </a></th>
 			<th> <a href="product?sort=nome">Nome</a></th>
@@ -68,10 +92,10 @@ Cart cart = (Cart) request.getAttribute("cart");
 	</table>
 
 
-	<h2>Insert</h2>
-	<form action="product" method="post">
+	<h2 style="text-align:center;">Insert</h2>
+	<form style="text-align:center;" action="product" method="post">
 		<input type="hidden" name="action" value="insert"> <label
-			for="id">id:</label><br> <input name="id" type="number"
+			for="id">Id:</label><br> <input name="id" type="number"
 			maxlength="20" required placeholder="inserisci id"><br>
 
 		<label for="nome">Nome:</label><br> <input name="nome"
@@ -83,7 +107,7 @@ Cart cart = (Cart) request.getAttribute("cart");
 		<br> <label for="prezzo">Prezzo:</label><br> <input
 			name="prezzo" type="number" min="0" value="0" required><br>
 
-		<label for="saldo">Saldo:</label> <input name="saldo" type="number"
+		<label for="saldo">Saldo:</label><br> <input name="saldo" type="number"
 			value="0" required><br> <label for="data">Data
 			di uscita</label><br> <input name="data" type="date" required><br>
 
