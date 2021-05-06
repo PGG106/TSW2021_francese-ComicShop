@@ -39,8 +39,11 @@ public class ItemOrder {
     return(getItem().getDescrizione());
   }
 
- 
-
+  public String getNome() {
+	  return(getItem().getNome());
+  }
+  
+  
   public double getPrezzo() {
     return(getItem().getPrezzo());
   }
