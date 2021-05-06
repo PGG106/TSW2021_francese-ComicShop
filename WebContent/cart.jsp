@@ -37,7 +37,7 @@ if (cart != null) {
 	<tr>
 		<td><%=beancart.getNome()%></td>
 		<td><%=beancart.getPrezzo()%> Euro</td>
-		<td><%=beancart.getNumItems()%></td>
+		<td>  <input type=number value=<%=beancart.getNumItems() %>></td>
 		<td><a href="product?action=deleteC&id=<%=beancart.getId()%>">Elimina
 				dal carrello</a></td>
 	</tr>
