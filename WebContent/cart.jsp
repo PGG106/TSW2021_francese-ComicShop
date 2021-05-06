@@ -21,18 +21,23 @@
 <%
 if (cart != null) {
 %>
-	<h2>Cart</h2>
+	<h2>Carrello</h2>
 	<table border="1">
 	<tr>
-		<th>Name</th>
-		<th>Action</th>
+		<th>Articolo:</th>
+		<th>Prezzo:</th>
+		<th>Quantità:</th>
+		<th>Azioni</th>
 	</tr>
 	<%
-	List<ItemOrder> prodcart = cart.getProducts();
-	for (ItemOrder beancart : prodcart) {
-	%>
+			List<ItemOrder> prodcart = cart.getProducts();
+			for (ItemOrder beancart : prodcart) {
+		%>
+
 	<tr>
-		<td><%=beancart.getItem().toString()%>,<%=beancart.getNumItems()%></td>
+		<td><%=beancart.getNome()%></td>
+		<td><%=beancart.getPrezzo()%> Euro</td>
+		<td><%=beancart.getNumItems()%></td>
 		<td><a href="product?action=deleteC&id=<%=beancart.getId()%>">Elimina
 				dal carrello</a></td>
 	</tr>
