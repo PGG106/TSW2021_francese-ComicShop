@@ -54,7 +54,7 @@ if (cart != null) {
 
 	<tr>
 		<td><%=beancart.getNome()%></td>
-		<td><input type=number value=<%=beancart.getNumItems()%> min="1" max=<%=beancart.getNumItems()%>></td>
+		<td><input type=number value=<%=beancart.getNumItems()%>  style="width:50px;" ></td>
 		<td><%=beancart.getTotalCost()%> Euro</td>
 		<td><a href="product?action=deleteC&id=<%=beancart.getId()%>">Elimina
 				dal carrello</a></td>
