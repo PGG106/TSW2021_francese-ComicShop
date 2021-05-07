@@ -42,17 +42,21 @@ Cart cart = (Cart) request.getAttribute("cart");
 		text-align: center;
 		clear: both;
 	}
+	div.container {
+		display: flex;
+  		justify-content: space-between;
+  		align-items: flex-end;
+	}
 	</style>
 </head>
 
 <body>
-
-	<div style="clear: right; float: right; text-align: right;">
-		<br/><br> <a href="cart.jsp"> Visualizza Carrello</a><br/>
+	<div class="container">
+		<a href="product">Lista</a>
+		<a href="cart.jsp">Visualizza Carrello</a>
 	</div>
 	
 	<h2>Prodotti</h2>
-	<a style="text-align:center" href="product">Lista</a>
 	
 	<table>
 		<tr>
@@ -94,29 +98,35 @@ Cart cart = (Cart) request.getAttribute("cart");
 
 	<h2 style="text-align:center;">Insert</h2>
 	<form style="text-align:center;" action="product" method="post">
-		<input type="hidden" name="action" value="insert"> <label
-			for="id">Id:</label><br> <input name="id" type="number"
-			maxlength="20" required placeholder="inserisci id"><br>
-
-		<label for="nome">Nome:</label><br> <input name="nome"
-			type="text" maxlength="20" required placeholder="inserisci nome"><br>
-
+		<input type="hidden" name="action" value="insert">
+		
+		<label for="id">Id:</label><br> 
+		<input name="id" type="number"maxlength="20" required placeholder="inserisci id"><br>
+		
+		<label for="nome">Nome:</label><br> 
+		<input name="nome" type="text" maxlength="20" required placeholder="inserisci nome"><br>
+		
 		<label for="descrizione">Descrizione:</label><br>
-		<textarea name="descrizione" maxlength="100" rows="3" required
-			placeholder="inserisci descrizione"></textarea>
-		<br> <label for="prezzo">Prezzo:</label><br> <input
-			name="prezzo" type="number" min="0" value="0" required><br>
-
-		<label for="saldo">Saldo:</label><br> <input name="saldo" type="number"
-			value="0" required><br> <label for="data">Data
-			di uscita</label><br> <input name="data" type="date" required><br>
-
-		<label for="voto">Voto:</label><br> <input name="voto"
-			type="number" min="0" max="10" required><br> <label
-			for="peso">Peso:</label><br> <input name="peso" type="number"
-			required><br> <label for="quant">Quantita':</label><br>
+		<textarea name="descrizione" maxlength="100" rows="3" required placeholder="inserisci descrizione"></textarea><br>
+		
+		<label for="prezzo">Prezzo:</label><br> 
+		<input name="prezzo" type="number" min="0" value="0" required><br>
+		
+		<label for="saldo">Saldo:</label><br> 
+		<input name="saldo" type="number" value="0" required><br>	
+		 
+		<label for="data">Data di uscita</label><br> 
+		<input name="data" type="date" required><br>
+		
+		<label for="voto">Voto:</label><br> 
+		<input name="voto" type="number" min="0" max="10" required><br> 
+		
+		<label for="peso">Peso:</label><br> 
+		<input name="peso" type="number" required><br> 
+		
+		<label for="quant">Quantita':</label><br>
 		<input name="quant" type="number" min="1" value="1" required><br>
-
+		
 		<input type="submit" value="Add"><input type="reset"
 			value="Reset">
 	</form>
