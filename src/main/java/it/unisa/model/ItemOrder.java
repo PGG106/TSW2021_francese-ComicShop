@@ -65,6 +65,6 @@ public class ItemOrder {
   }
 
   public double getTotalCost() {
-    return(getNumItems() * getPrezzo());
+    return (Math.round(getNumItems() * getPrezzo()*100)/100.00);
   }
 }
