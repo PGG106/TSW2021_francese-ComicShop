@@ -41,26 +41,20 @@ if (cart != null) {
 %>
 	<h2>Carrello</h2>
 	<table>
-	<colgroup>
-    	<col span="1" style="width:1px;">
-    	<col span="1" style="width:1px;">
-        <col span="1" style="width:1px;">
-        <col span="1" style="width:1px;">
- 	</colgroup>
 	<tr>
 		<th>Articolo:</th>
 		<th>Quantità:</th>
 		<th>Prezzo:</th>
-		<th>Azioni</th>
+		<th>Azioni:</th>
 	</tr>
 	<%
 			List<ItemOrder> prodcart = cart.getProducts();
 			for (ItemOrder beancart : prodcart) {
-		%>
+	%>
 
 	<tr>
 		<td><%=beancart.getNome()%></td>
-		<td>  <input type=number value=<%=beancart.getNumItems()%>></td>
+		<td><input type=number value=<%=beancart.getNumItems()%> min="1" max=<%=beancart.getNumItems()%>></td>
 		<td><%=beancart.getTotalCost()%> Euro</td>
 		<td><a href="product?action=deleteC&id=<%=beancart.getId()%>">Elimina
 				dal carrello</a></td>
