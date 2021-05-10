@@ -27,14 +27,14 @@ public class UserDAO {
 
 	private static final String TABLE_NAME = "utente";
 
-	public static  UserBean doRetrieve(UserBean bean) {
+	public   UserBean doRetrieve(UserBean bean) {
 
 		PreparedStatement preparedStatement = null;
 
 		String username = bean.getUsername();
 		String password = bean.getPassword();
 
-		String searchQuery = "select * from " + TABLE_NAME + "where username='" + username + "' AND password='"
+		String searchQuery = "select * from " + TABLE_NAME + " WHERE username='" + username + "' AND password='"
 				+ password + "'";
 
 		// "System.out.println" prints in the console; Normally used to trace the
@@ -59,7 +59,7 @@ public class UserDAO {
 				String firstName = rs.getString("nome");
 				String lastName = rs.getString("cognome");
 				String email= rs.getString("email");
-				String num_tel= rs.getString("num_tel");
+				String num_tel= rs.getString("num_telefono");
 				String paese_residenza= rs.getString("paese_residenza");
 				LocalDate data_nascita=rs.getDate("data_nascita").toLocalDate();
 				System.out.println("Welcome " + firstName);
@@ -109,4 +109,49 @@ public class UserDAO {
 		return bean;
 
 	}
+	
+	public  void doSave(UserBean bean)
+			{
+	Connection connection = null;
+	PreparedStatement preparedStatement = null;
+
+	String insertSQL = "INSERT INTO " + TABLE_NAME
+			+ " (username,nome,cognome, email, password,num_telefono,paese_residenza,data_nascita) VALUES (?,?,?,?,?,?,?,?)";
+	
+	System.out.println("Query: " + insertSQL);
+	try {
+		connection = ds.getConnection();
+		preparedStatement = connection.prepareStatement(insertSQL);
+		preparedStatement.setString(1, bean.getUsername());
+		preparedStatement.setString(2, bean.getNome());
+		preparedStatement.setString(3, bean.getCognome());
+		preparedStatement.setString(4, bean.getEmail());
+		preparedStatement.setString(5, bean.getPassword());
+		preparedStatement.setString(6, bean.getNum_tel());
+		preparedStatement.setString(7, bean.getPaese_residenza());
+		preparedStatement.setDate(8,  Date.valueOf(bean.getData_nascita()));
+		
+
+		preparedStatement.executeUpdate();
+
+		
+	} catch (SQLException e) {
+		
+		e.printStackTrace();
+	} finally {
+		try {
+			if (preparedStatement != null)
+				preparedStatement.close();
+		
+			if (connection != null)
+				connection.close();
+		}
+		catch(SQLException e) {
+			System.out.println("Registration failed : An Exception has occurred! " + e);
+		}
+		
+		}
+	}
 }
+	
+
