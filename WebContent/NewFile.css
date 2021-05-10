@@ -1,0 +1,15 @@
+@charset "ISO-8859-1";
+
+   #total {
+      text-align:right;
+   }
+
+   #table {
+      border:15px #000040;
+      border-collapse:separate;
+   }
+
+   #table th, #table td {
+      border:1px solid #000040;
+   }
+   

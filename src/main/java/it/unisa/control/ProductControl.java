@@ -46,6 +46,7 @@ public class ProductControl extends HttpServlet {
 				} else if (action.equalsIgnoreCase("deleteC")) {
 					int id = Integer.parseInt(request.getParameter("id"));
 					cart.deleteProduct(id);
+					request.getRequestDispatcher("cart.jsp").forward(request, response);
 				} else if (action.equalsIgnoreCase("read")) {
 					int id = Integer.parseInt(request.getParameter("id"));
 					request.removeAttribute("product");
