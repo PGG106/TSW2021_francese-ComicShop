@@ -35,7 +35,7 @@
 	if (cart != null) {
 	%>
 	<h2>Carrello</h2>
-	<table>
+	<table class=cart>
 		<tr>
 			<th>Articolo:</th>
 			<th>Quantità:</th>
@@ -81,6 +81,6 @@
 	}
 	%>
 	<form><input type="hidden" name="action" value="CompletaOrdine">
-	<input type="submit" formaction="Ordine" value="Checkout"></form>
+	<input type="submit" formaction="CheckoutPage.jsp" value="Checkout"></form>
 </body>
 </html>

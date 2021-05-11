@@ -37,7 +37,7 @@ try
 	        
           HttpSession session = request.getSession(true);	    
           session.setAttribute("currentSessionUser",user); 
-          response.sendRedirect("userLogged.jsp"); //logged-in page      		
+          response.sendRedirect("ProductView.jsp"); //logged-in page      		
      }
 	        
      else 

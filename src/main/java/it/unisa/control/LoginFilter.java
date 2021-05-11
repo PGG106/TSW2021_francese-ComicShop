@@ -13,7 +13,7 @@ import javax.servlet.http.*;
 /**
  * Servlet Filter implementation class LoginFiler
  */
-@WebFilter(urlPatterns = { "/Ordine/*" })
+@WebFilter(urlPatterns = { "/Ordine/*" ,"/CheckoutPage.jsp/*"})
 public class LoginFilter implements Filter {
 	@Override
 	public void init(FilterConfig config) throws ServletException {
@@ -29,7 +29,7 @@ public class LoginFilter implements Filter {
 		HttpSession session = request.getSession(false);
 		String requestPath = request.getRequestURI();
 
-		if (session == null || session.getAttribute("user") == null) { // change "user" for the session attribute you
+		if (session == null || session.getAttribute("currentSessionUser") == null) { // change "user" for the session attribute you
 																		// have defined
 
 			response.sendRedirect(request.getContextPath() + "/loginPage.jsp?"); // No logged-in user found, so redirect

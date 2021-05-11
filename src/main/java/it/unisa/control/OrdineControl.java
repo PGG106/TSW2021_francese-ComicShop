@@ -35,6 +35,7 @@ public class OrdineControl extends HttpServlet {
 				session.setAttribute("cart", new Cart());
 				
 				
+				
 			} 
 		}
 	}
