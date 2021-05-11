@@ -27,7 +27,7 @@ public class LoginFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) res;
 		HttpSession session = request.getSession(false);
-		String requestPath = request.getRequestURI();
+		
 
 		if (session == null || session.getAttribute("currentSessionUser") == null) { // change "user" for the session attribute you
 																		// have defined

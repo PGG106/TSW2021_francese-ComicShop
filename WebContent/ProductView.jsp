@@ -30,12 +30,12 @@ Cart cart = (Cart) request.getAttribute("cart");
 		<a href="product">Lista</a>
 		<a href="cart.jsp">Visualizza Carrello</a>
 	</div>
-	
+
 	<h2>Prodotti</h2>
 	
 	<table>
-	<thead>
-		<tr>
+	<thead class=catalogo>
+		<tr >
 			<th> <a href="product?sort=id">Id </a></th>
 			<th> <a href="product?sort=nome">Nome</a></th>
 			<th> <a href="product?sort=prezzo">Prezzo</a></th>
@@ -44,7 +44,7 @@ Cart cart = (Cart) request.getAttribute("cart");
 			<th> Azioni</th>
 		</tr>
 		</thead>
-		
+		<tbody class=catalogo>
 		<%
 		if (products != null && products.size() != 0) {
 			Iterator<?> it = products.iterator();
@@ -61,6 +61,7 @@ Cart cart = (Cart) request.getAttribute("cart");
 				<a href="product?action=addC&id=<%=bean.getId()%>">Aggiungi al
 					carrello</a></td>
 		</tr>
+		
 		<%
 		}
 		} else {
@@ -71,6 +72,7 @@ Cart cart = (Cart) request.getAttribute("cart");
 		<%
 		}
 		%>
+		</tbody>
 	</table>
 
 
