@@ -14,6 +14,11 @@ public class OrderDAO {
 	static ResultSet rs = null;
 	static int numordine;
 
+	public OrderDAO() {
+		super();
+		
+	}
+
 	static {
 		try {
 			Context initCtx = new InitialContext();
