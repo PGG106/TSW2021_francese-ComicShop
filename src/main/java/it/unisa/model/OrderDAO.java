@@ -5,6 +5,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+
 import java.sql.*;
 import java.time.LocalDate;
 
@@ -90,7 +91,23 @@ public class OrderDAO {
 			}
 		}
 
+	public static OrderBean getOrderById(String OrderID)
+	{  //TODO
+		return null;
 		
-
+		
 	}
+	
+	public static OrderBean getAllOrdersByUser(UserBean user)
+	{  //TODO
+		return null;
+		
+		
+	}
+	
+	
+	
+	}
+
+
 
