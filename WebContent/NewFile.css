@@ -1,15 +1,47 @@
-@charset "ISO-8859-1";
+table {
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid black; 
+	background : #808080;
+	border-radius: 6px;
+	overflow: hidden;
+	max-width: 800px;
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+	background: white
+}
 
-   #total {
-      text-align:right;
-   }
+thead tr {
+	height: 50px;
+	background: #FFED86;
+	font-size: 16px;
+}
+tr{
+	background-color:#f0f0f5
+}
+tr:hover {background-color: #7d5bbe ;}
 
-   #table {
-      border:15px #000040;
-      border-collapse:separate;
-   }
+table, th, td {
+	border: 1px solid black;
+}
 
-   #table th, #table td {
-      border:1px solid #000040;
-   }
-   
+th, td {
+	padding: 5px;
+}
+
+td {
+	text-align: left;
+	border-spacing: 10px;
+}
+
+h2 {
+	text-align: center;
+	clear: both;
+}
+
+div.container {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+}

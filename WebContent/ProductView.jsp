@@ -20,34 +20,9 @@ Cart cart = (Cart) request.getAttribute("cart");
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="ProductStyle.css" rel="stylesheet" type="text/css">
+<link href="NewFile.css" rel="stylesheet" type="text/css">
 <title>Catalogo</title>
-	<style>
-	table {
-  		margin-left:auto;
- 		margin-right:auto;
- 	}
-	table, th, td {
-  		border: 1px solid black;
-  		border-collapse: collapse;
-	}
-	th, td {
-  		padding: 5px;
-	}
-	td {
-  		text-align: left;
-  		border-spacing: 10px;
-	}
-	h2 {
-		text-align: center;
-		clear: both;
-	}
-	div.container {
-		display: flex;
-  		justify-content: space-between;
-  		align-items: flex-end;
-	}
-	</style>
+	
 </head>
 
 <body>
@@ -59,6 +34,7 @@ Cart cart = (Cart) request.getAttribute("cart");
 	<h2>Prodotti</h2>
 	
 	<table>
+	<thead>
 		<tr>
 			<th> <a href="product?sort=id">Id </a></th>
 			<th> <a href="product?sort=nome">Nome</a></th>
@@ -67,6 +43,8 @@ Cart cart = (Cart) request.getAttribute("cart");
 			<th> <a href="product?sort=quantita">Quantita'</a></th>
 			<th> Azioni</th>
 		</tr>
+		</thead>
+		
 		<%
 		if (products != null && products.size() != 0) {
 			Iterator<?> it = products.iterator();

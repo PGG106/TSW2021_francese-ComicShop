@@ -41,7 +41,7 @@ try
      }
 	        
      else 
-          response.sendRedirect("invalidLogin.jsp"); //error page 
+          response.sendRedirect("loginPage.jsp?login=wrong"); //error page 
 } 
 		
 		

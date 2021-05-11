@@ -9,29 +9,6 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Carrello</title>
-<style>
-table {
-	margin-left: auto;
-	margin-right: auto;
-	border: 1px solid black;
-	border-collapse: collapse;
-}
-
-th, td {
-	padding: 5px;
-	border: 1px solid black;
-	border-collapse: collapse;
-}
-
-td {
-	text-align: left;
-	border-spacing: 10px;
-}
-
-h2 {
-	text-align: center;
-}
-</style>
 </head>
 <body>
 

@@ -32,7 +32,7 @@ public class LoginFilter implements Filter {
 		if (session == null || session.getAttribute("user") == null) { // change "user" for the session attribute you
 																		// have defined
 
-			response.sendRedirect(request.getContextPath() + "/loginPage.jsp"); // No logged-in user found, so redirect
+			response.sendRedirect(request.getContextPath() + "/loginPage.jsp?"); // No logged-in user found, so redirect
 																				// to login
 			// page.
 		} else {
