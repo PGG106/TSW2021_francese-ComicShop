@@ -54,7 +54,7 @@ Cart cart = (Cart) request.getAttribute("cart");
 		<tr>
 			<td><%=bean.getId()%></td>
 			<td><%=bean.getNome()%></td>
-			<td><%=bean.getPrezzo()%></td>
+			<td><%=bean.getPrezzo()%> &euro;</td>
 			<td><%=bean.getVoto()%></td>
 			<td><%=bean.getQuantità()%></td>
 			<td><a href="product?action=read&id=<%=bean.getId()%>">Dettagli</a><br>

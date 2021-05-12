@@ -7,8 +7,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="NewFile.css">
 <meta charset="ISO-8859-1">
+<link href="NewFile.css" rel="stylesheet" type="text/css">
 <title>Carrello</title>
 </head>
 <body>
@@ -38,7 +38,7 @@
 	<h2>Carrello</h2>
 	<div class=cart>
 	<table >
-	<thead>
+	<thead class=cart>
 		<tr>
 			<th>Articolo:</th>
 			<th>Quantità:</th>
@@ -51,7 +51,7 @@
 		float prezzo_finale = 0;
 		for (ItemOrder beancart : prodcart) {
 		%>
-	<tbody>
+	<tbody class=cart>
 		<tr>
 			<td><%=beancart.getNome()%></td>
 			<td><form>
@@ -60,7 +60,7 @@
 						VALUE=<%=beancart.getNumItems()%>> <INPUT TYPE=SUBMIT
 						VALUE=Update>
 				</form></td>
-			<td><%=beancart.getTotalCost()%> Euro</td>
+			<td><%=beancart.getTotalCost()%> &euro;</td>
 			<td><a href="product?action=deleteC&id=<%=beancart.getId()%>">Elimina
 					dal carrello</a></td>
 		</tr>
@@ -73,15 +73,17 @@
 		<%
 		}
 		%>
-		<tfoot> 
+		<tfoot class=cart> 
 		
 		<tr>
-		<th  colspan=3>Totale </th>
-		<td>  <%=prezzo_finale %></td>
+		<th  colspan=3>Totale: </th>
+		<td> <%=prezzo_finale %> &euro;</td>
 		</tr>
 		</tfoot>
 	</table>
-	<form><input type="hidden" name="action" value="CompletaOrdine">
+	<br>
+	<form class=cart>
+	<input type="hidden" name="action" value="CompletaOrdine">
 	<input type="submit" id=checkout formaction="CheckoutPage.jsp" value="Checkout"></form>
 	</div>
 	<%

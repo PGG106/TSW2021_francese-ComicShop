@@ -25,14 +25,31 @@ tbody.catalogo tr {
 tbody.catalogo tr:hover {background-color: #a992d3 ;}
 
 tbody td{
-
+	
 	border-spacing:5px;
 	text-align:center;
 }
 
+thead.cart tr{
+	height: 50px;
+	background: #FFED86;
+	font-size: 16px;
+	border:1px solid black
+}
 
+tbody.cart tr{
+	background-color:#f0f0f5;
+	border: 1px solid black;
+	border-spacing:5px;
+	text-align:center;
+	height: 50px; 
+}
 
+tbody.cart tr:hover {background-color: #a992d3 ;}
 
+tfoot.cart th{
+	height: 50px;
+}
 
 
 h2 {
@@ -49,11 +66,6 @@ div.container {
 	color:red;
 }
 
-.cart{
-	width:100%;
-	
-	border:none;
-}
 #checkout
 {
 position:relative;
