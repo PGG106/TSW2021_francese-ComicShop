@@ -11,7 +11,6 @@ import java.time.LocalDate;
 
 public class OrderDAO {
 	private static DataSource ds;
-	static Connection currentCon = null;
 	static ResultSet rs = null;
 	static int numordine;
 
@@ -61,7 +60,7 @@ public class OrderDAO {
 			preparedStatement.setDate(4,  Date.valueOf(LocalDate.now()));
 			preparedStatement.setString(5, "lorem ipsum");
 			
-			 preparedStatement.executeQuery(insertQuery);
+			 preparedStatement.executeQuery();
 			
 			
 
@@ -81,24 +80,24 @@ public class OrderDAO {
 				preparedStatement = null;
 			}
 
-			if (currentCon != null) {
+			if (connection != null) {
 				try {
-					currentCon.close();
+					connection.close();
 				} catch (Exception e) {
 				}
 
-				currentCon = null;
+				connection = null;
 			}
 		}
 
-	public static OrderBean getOrderById(String OrderID)
+	public  synchronized OrderBean getOrderById(String OrderID)
 	{  //TODO
 		return null;
 		
 		
 	}
 	
-	public static OrderBean getAllOrdersByUser(UserBean user)
+	public synchronized OrderBean getAllOrdersByUser(UserBean user)
 	{  //TODO
 		return null;
 		

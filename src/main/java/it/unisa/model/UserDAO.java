@@ -10,7 +10,6 @@ import java.time.LocalDate;
 
 public class UserDAO {
 	private static DataSource ds;
-	static Connection currentCon = null;
 	static ResultSet rs = null;
 
 	static {
@@ -48,7 +47,7 @@ public class UserDAO {
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(searchQuery);
-			rs = preparedStatement.executeQuery(searchQuery);
+			rs = preparedStatement.executeQuery();
 			boolean more = rs.next();
 			if (!more) {
 				System.out.println("Sorry, you are not a registered user! Please sign up first");
@@ -96,13 +95,13 @@ public class UserDAO {
 				preparedStatement = null;
 			}
 
-			if (currentCon != null) {
+			if (connection != null) {
 				try {
-					currentCon.close();
+					connection.close();
 				} catch (Exception e) {
 				}
 
-				currentCon = null;
+				connection = null;
 			}
 		}
 
