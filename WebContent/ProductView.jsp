@@ -75,7 +75,7 @@ Cart cart = (Cart) request.getAttribute("cart");
 	</table>
 
 
-	<h2 style="text-align:center;">Insert</h2>
+	<h2 style="text-align:center;">Inserisci nuovo articolo</h2>
 	<div class=catalogo>
 	<form style="text-align:center;" action="product" method="post">
 		<input type="hidden" name="action" value="insert">
