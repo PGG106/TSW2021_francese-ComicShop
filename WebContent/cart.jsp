@@ -82,9 +82,9 @@
 		</tfoot>
 	</table>
 	<br>
-	<form class=cart>
-	<input type="hidden" name="action" value="CompletaOrdine">
-	<input type="submit" id=checkout formaction="CheckoutPage.jsp" value="Checkout"></form>
+	<form class=cart action="CheckoutPage.jsp" method="get" id="checkout">
+	<button class=btn type="submit">Checkout</button>
+	</form>
 	</div>
 	<%
 	}

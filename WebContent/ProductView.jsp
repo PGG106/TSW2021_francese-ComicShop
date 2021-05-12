@@ -58,8 +58,7 @@ Cart cart = (Cart) request.getAttribute("cart");
 			<td><%=bean.getVoto()%></td>
 			<td><%=bean.getQuantità()%></td>
 			<td><a href="product?action=read&id=<%=bean.getId()%>">Dettagli</a><br>
-				<a href="product?action=addC&id=<%=bean.getId()%>">Aggiungi al
-					carrello</a></td>
+				<a href="product?action=addC&id=<%=bean.getId()%>">Aggiungi al carrello</a></td>
 		</tr>
 		
 		<%
@@ -77,41 +76,41 @@ Cart cart = (Cart) request.getAttribute("cart");
 
 
 	<h2 style="text-align:center;">Insert</h2>
+	<div class=catalogo>
 	<form style="text-align:center;" action="product" method="post">
 		<input type="hidden" name="action" value="insert">
 		
 		<label for="id">Id:</label><br> 
-		<input name="id" type="number"maxlength="20" required placeholder="inserisci id"><br>
+		<input class=catalogo name="id" type="number"maxlength="20" required placeholder="Inserisci ID"><br>
 		
 		<label for="nome">Nome:</label><br> 
-		<input name="nome" type="text" maxlength="20" required placeholder="inserisci nome"><br>
+		<input class=catalogo name="nome" type="text" maxlength="20" required placeholder="Inserisci nome"><br>
 		
 		<label for="descrizione">Descrizione:</label><br>
-		<textarea name="descrizione" maxlength="100" rows="3" required placeholder="inserisci descrizione"></textarea><br>
+		<textarea class=catalogo name="descrizione" maxlength="100" rows="3" required placeholder="Inserisci descrizione"></textarea><br>
 		
 		<label for="prezzo">Prezzo:</label><br> 
-		<input name="prezzo" type="number" min="0" value="0" required><br>
+		<input class=catalogo name="prezzo" type="number" min="0" value="0" required><br>
 		
 		<label for="saldo">Saldo:</label><br> 
-		<input name="saldo" type="number" value="0" required><br>	
+		<input class=catalogo name="saldo" type="number" value="0" required><br>	
 		 
 		<label for="data">Data di uscita</label><br> 
-		<input name="data" type="date" required><br>
+		<input class=catalogo name="data" type="date" required><br>
 		
 		<label for="voto">Voto:</label><br> 
-		<input name="voto" type="number" min="0" max="10" required><br> 
+		<input class=catalogo name="voto" type="number" min="0" max="10" required><br> 
 		
 		<label for="peso">Peso:</label><br> 
-		<input name="peso" type="number" required><br> 
+		<input class=catalogo name="peso" type="number" required><br> 
 		
 		<label for="quant">Quantita':</label><br>
-		<input name="quant" type="number" min="1" value="1" required><br>
+		<input class=catalogo name="quant" type="number" min="1" value="1" required><br>
 		
-		<input type="submit" value="Add"><input type="reset"
-			value="Reset">
+		<input class=btn type="submit" value="Aggiungi"><input class=btn type="reset"
+			value="Ripristina">
 	</form>
-
-
-
+	</div>
+	
 </body>
 </html>

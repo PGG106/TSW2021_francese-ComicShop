@@ -1,3 +1,7 @@
+html {
+	font-family: 'Lato', sans-serif;
+}
+
 table {
 	margin-left: auto;
 	margin-right: auto;
@@ -10,6 +14,14 @@ table {
 	position: positional;
 	
 }
+
+tbody td{
+	border-spacing:5px;
+	text-align:center;
+}
+
+
+
  thead.catalogo tr{
 	height: 50px;
 	background: #FFED86;
@@ -18,17 +30,13 @@ table {
 }
 
 tbody.catalogo tr {
-	
 	background-color:#f0f0f5;
 	border: 1px solid black; 
 }
+
 tbody.catalogo tr:hover {background-color: #a992d3 ;}
 
-tbody td{
-	
-	border-spacing:5px;
-	text-align:center;
-}
+
 
 thead.cart tr{
 	height: 50px;
@@ -45,14 +53,94 @@ tbody.cart tr{
 	height: 50px; 
 }
 
-tbody.cart tr:hover {background-color: #a992d3 ;}
-
 tfoot.cart th{
 	height: 50px;
 }
 
+tbody.cart tr:hover {background-color: #a992d3 ;}
 
-h2 {
+
+
+thead.details tr{
+	height: 50px;
+	background: #FFED86;
+	font-size: 16px;
+	border:1px solid black
+}
+
+tbody.details tr{
+	background-color:#f0f0f5;
+	border: 1px solid black;
+	border-spacing:5px;
+	text-align:center;
+	height: 50px; 
+}
+
+tfoot.details td{
+	height: 50px;
+	text-align: center;
+}
+
+tbody.details tr:hover {background-color: #a992d3 ;}
+
+
+
+.btn {
+	background-color: #a6a6c4;
+ 	border: none;
+  	color: white;
+  	padding: 15px 32px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 16px;
+  	margin: 4px 2px;
+  	cursor: pointer;
+}
+
+.btn:hover {
+	background-color: #a992d3;
+}
+
+div.login, div.catalogo, div.register {
+	width: 300px;
+  	border: 1px solid black;
+  	padding: 12px 20px 12px;
+ 	margin-left: auto;
+	margin-right: auto;
+	background-color:#f0f0f5;
+}
+
+input.login[type=text], input.login[type=password], 
+input.catalogo[type=text], input.register[type=text], 
+input.register[type=email], input.register[type=password],
+input.catalogo[type=date], input.register[type=date],
+input.catalogo[type=number], input.register[type=number],
+select {
+	
+  	width: 100%;
+  	padding: 12px 20px;
+  	margin: 8px;
+  	display: inline-block;
+  	border: 1px solid #ccc;
+  	border-radius: 4px;
+  	box-sizing: border-box;
+}
+
+textarea.catalogo, textarea.register  select {
+  	width: 100%;
+  	padding: 12px 20px;
+  	margin: 8px;
+  	display: inline-block;
+  	border: 1px solid #ccc;
+  	border-radius: 4px;
+  	box-sizing: border-box;
+}
+
+
+
+
+h2, h3 {
 	text-align: center;
 	clear: both;
 }

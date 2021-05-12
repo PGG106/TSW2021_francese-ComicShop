@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="NewFile.css">
+<link href="NewFile.css" rel="stylesheet" type="text/css">
 <meta charset="ISO-8859-1">
 <title>Login</title>
 </head>
@@ -16,11 +16,17 @@
 <%}
 	}%>
 
-<form action="Login">
-<label>Username <input type="text" name="un" ></label> <br>
-<label>Password <input type="password" name="pw" ></label>
-<input type="submit" name="login" value="login">
+	<h2>Accedi / Registrati</h2>
+	
+	<h3>Hai già un account?</h3>
+	
+<div class=login>
+<form action="Login" class=login>
+<label><input class=login type="text" name="un" placeholder="Username"></label> <br><br>
+<label><input class=login type="password" name="pw" placeholder="Password"></label><br><br>
+<button class=btn type="submit" name="login">Login</button>
+<button class=btn type="submit" formaction="RegistrationPage.jsp">Crea un account</button>
 </form>
-<a href= "RegistrationPage.jsp">non sei registrato? Registrati ora</a>
+</div>
 </body>
 </html>
