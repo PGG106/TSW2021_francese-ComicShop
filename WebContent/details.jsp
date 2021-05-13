@@ -55,7 +55,7 @@
 	</table>
 	
 	<br>
-	<form class=details action="product?action=addC&id=<%=product.getId()%>" method="get" id="checkout">
+	<form class=details action="product?action=addC&id=<%=product.getId()%>" method="post" id="checkout">
 	<button class=btn type="submit">Aggiungi al carrello</button>
 	</form>
 	</div>
