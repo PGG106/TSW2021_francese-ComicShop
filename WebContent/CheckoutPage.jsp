@@ -1,4 +1,4 @@
-<%@page import="it.unisa.model.AddressDao"%>
+<%@page import="it.unisa.model.AddressDAO"%>
 <%@page import="it.unisa.model.AddressBean"%>
 <%@page import="java.util.List"%>
 <%@page import="it.unisa.model.UserBean"%>
@@ -17,14 +17,14 @@
 	<div class=indirizzo>
 		<h3>Indirizzo di consegna</h3>
 <%
-	if (user != null) {
+if (user != null) {
 		
-		List<AddressBean> addresses = AddressDao.getAddresses(user);
+		List<AddressBean> addresses = AddressDAO.getAddresses(user);
 		for (AddressBean address : addresses) {
 		
 	}
 	}
-	%>
+%>
 	</div>
 </body>
 </html>

@@ -8,6 +8,9 @@ private float costo_totale;
 private String indirizzo_spedizione;
 private LocalDate data_spedizione;
 private String metodo_di_pagamento;
+private String Username;
+private LocalDate data_ordine;
+
 public long getNum_ordine() {
 	return num_ordine;
 }
@@ -37,6 +40,18 @@ public String getMetodo_di_pagamento() {
 }
 public void setMetodo_di_pagamento(String metodo_di_pagamento) {
 	this.metodo_di_pagamento = metodo_di_pagamento;
+}
+public String getUsername() {
+	return Username;
+}
+public void setUsername(String username) {
+	Username = username;
+}
+public LocalDate getData_ordine() {
+	return data_ordine;
+}
+public void setData_ordine(LocalDate data_ordine) {
+	this.data_ordine = data_ordine;
 }
 
 }

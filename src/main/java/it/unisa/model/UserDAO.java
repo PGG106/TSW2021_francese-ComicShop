@@ -26,7 +26,7 @@ public class UserDAO {
 
 	private static final String TABLE_NAME = "utente";
 
-	public   UserBean doRetrieve(UserBean bean) {
+	public  synchronized  UserBean doRetrieve(UserBean bean) {
 
 		PreparedStatement preparedStatement = null;
 
@@ -109,7 +109,7 @@ public class UserDAO {
 
 	}
 	
-	public  void doSave(UserBean bean)
+	public synchronized  void doSave(UserBean bean)
 			{
 	Connection connection = null;
 	PreparedStatement preparedStatement = null;
