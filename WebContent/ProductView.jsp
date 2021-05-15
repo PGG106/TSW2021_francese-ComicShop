@@ -112,5 +112,11 @@ Cart cart = (Cart) request.getAttribute("cart");
 	</form>
 	</div>
 	
+	<div class=wrapper>
+	<form class=cart action="OrderHistory.jsp" method="get" id="orderhistory">
+	<button class=btn type="submit">Storico Ordini</button>
+	</form>
+	</div>
+	
 </body>
 </html>

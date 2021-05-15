@@ -83,18 +83,40 @@ tfoot.details td{
 
 tbody.details tr:hover {background-color: #a992d3 ;}
 
+thead.address tr{
+	height: 50px;
+	background: #FFED86;
+	font-size: 16px;
+	border:1px solid black
+}
 
+tbody.address tr{
+	background-color:#f0f0f5;
+	border: 1px solid black;
+	border-spacing:5px;
+	text-align:center;
+	height: 50px; 
+}
+
+tfoot.address td{
+	height: 50px;
+	text-align: center;
+}
+
+.wrapper {
+	text-align: center;
+}
 
 .btn {
 	background-color: #a6a6c4;
  	border: none;
+ 	position: center;
   	color: white;
   	padding: 15px 32px;
-  	text-align: center;
   	text-decoration: none;
   	display: inline-block;
   	font-size: 16px;
-  	margin: 4px 2px;
+  	margin: 0 auto;
   	cursor: pointer;
 }
 
@@ -102,7 +124,7 @@ tbody.details tr:hover {background-color: #a992d3 ;}
 	background-color: #a992d3;
 }
 
-div.login, div.catalogo, div.register {
+div.login, div.catalogo, div.register, div.address {
 	width: 300px;
   	border: 1px solid black;
   	padding: 12px 20px 12px;
@@ -111,11 +133,16 @@ div.login, div.catalogo, div.register {
 	background-color:#f0f0f5;
 }
 
+div.address {
+	display: block;
+}
+
 input.login[type=text], input.login[type=password], 
 input.catalogo[type=text], input.register[type=text], 
 input.register[type=email], input.register[type=password],
 input.catalogo[type=date], input.register[type=date],
 input.catalogo[type=number], input.register[type=number],
+input.address[type=text], input.address[type=number],
 select {
 	
   	width: 100%;
@@ -139,8 +166,7 @@ textarea.catalogo, textarea.register  select {
 
 
 
-
-h2, h3 {
+h1, h2, h3 {
 	text-align: center;
 	clear: both;
 }
@@ -156,7 +182,6 @@ div.container {
 
 #checkout
 {
-position:relative;
     transition: .5s ease;
     top: 50%;
     left: 45%;	
