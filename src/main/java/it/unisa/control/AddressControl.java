@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mysql.cj.Session;
+
 import it.unisa.model.*;
 
 /**
@@ -34,10 +36,10 @@ public class AddressControl extends HttpServlet {
 		String via = request.getParameter("via");
 		int numero_civico = Integer.parseInt(request.getParameter("numero_civico"));
 		int cap = Integer.parseInt(request.getParameter("cap"));
-		String città = request.getParameter("città");
+		String città = request.getParameter("citta");
 		String provincia = request.getParameter("provincia");
 		AddressBean address = new AddressBean();
-		UserBean user = new UserBean();
+		UserBean user = (UserBean) request.getSession().getAttribute("currentSessionUser");
 		address.setVia(via);
 		address.setNumero_civico(numero_civico);
 		address.setCap(cap);
@@ -45,7 +47,7 @@ public class AddressControl extends HttpServlet {
 		address.setProvincia(provincia);
 		AddressDAO.doSave(user, address);
 		
-		response.sendRedirect("CheckoutPage.jsp");
+		//response.sendRedirect("CheckoutPage.jsp");
 		
 	}
 

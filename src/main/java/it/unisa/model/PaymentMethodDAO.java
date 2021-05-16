@@ -36,9 +36,9 @@ public class PaymentMethodDAO {
 	public synchronized List<PaymentMethodBean> getPaymentMethods(UserBean user) {
 		List<PaymentMethodBean> Methods = new LinkedList<PaymentMethodBean>();
 		PreparedStatement preparedStatement = null;
-		String SearchQuery = "Select" + TABLE_NAME3 + ".*" + "FROM" + TABLE_NAME + "Join" + TABLE_NAME2
-				+ " ON username=utente" + "Join" + TABLE_NAME3 + " ON " + TABLE_NAME2 + ".metodo_di_pagamento=" + TABLE_NAME3 + ".numero"
-				+"WHERE "+TABLE_NAME+".username=?";
+		String SearchQuery = "Select " + TABLE_NAME3 + ".*" + " FROM " + TABLE_NAME + " Join " + TABLE_NAME2
+				+ " ON username=utente " + " Join " + TABLE_NAME3 + " ON " + TABLE_NAME2 + ".metodo_di_pagamento = " + TABLE_NAME3 + ".numero"
+				+" WHERE "+TABLE_NAME+".username = ?";
 				
 		Connection connection = null;
 		try {

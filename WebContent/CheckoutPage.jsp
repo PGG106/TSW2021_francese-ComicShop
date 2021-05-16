@@ -30,17 +30,24 @@
 			</thead>
 		<% 
 		List<AddressBean> addresses = addressDAO.getAddresses(user);
-		String indirizzo;
+		List<String> indirizzi= new ArrayList<String>();
 		for (AddressBean address : addresses) {
+		String indirizzo;
+		indirizzo=address.getVia()+" " + address.getNumero_civico()+" " +  address.getCittà()+" " + address.getProvincia()+" " + address.getCap();
+		indirizzi.add(indirizzo);	
+		}
 		%>
+		<%for(String indirizzo : indirizzi) 
+		{%>
 			<tbody>
 				<tr>
-				<td><%=address.getVia() + address.getNumero_civico() + address.getCittà() + address.getProvincia() + address.getCap()%></td>
+				<td><%=indirizzo%></td>
 				</tr>
+			
+	
+			
+			<%}%>
 			</tbody>
-	<% 
-	} 
-	%>
 			</table>
 	</div>
 	<br>

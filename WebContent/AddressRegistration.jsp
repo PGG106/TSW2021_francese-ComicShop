@@ -17,7 +17,7 @@
 		<label>Via<input class=address type=text name=via required></label> <br>
 		<label>Numero Civico<input class=address type=number name=numero_civico required></label> <br>
 		<label>Cap<input class=address type=number name=cap required></label> <br>
-		<label>Città<input class=address type=text name=città required></label> <br>
+		<label>Città<input class=address type=text name=citta required></label> <br>
 		<label>Provincia<input class=address type=text name=provincia required></label> <br>
 		<input class=btn type=submit value=Aggiungi>
 	</form>

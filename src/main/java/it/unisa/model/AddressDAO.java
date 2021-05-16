@@ -34,11 +34,11 @@ public class AddressDAO {
 	public synchronized List<AddressBean> getAddresses(UserBean user) {
 		List<AddressBean> addresses = new LinkedList<AddressBean>();
 		PreparedStatement preparedStatement = null;
-		String SearchQuery = "Select" + TABLE_NAME3 + ".*" + "FROM" + TABLE_NAME + "Join" + TABLE_NAME2
-				+ " ON username=utente" + "Join" + TABLE_NAME3 + " ON " + TABLE_NAME2 + ".via=" + TABLE_NAME3 + ".via"
-				+ " AND " + TABLE_NAME2 + ".cap=" + TABLE_NAME3 + ".cap" + "AND " + TABLE_NAME2 + ".numero_civico="
-				+ TABLE_NAME3 + ".numero_civico"
-				+"WHERE";
+		String SearchQuery = "Select " + TABLE_NAME3 + ".*" + " FROM " + TABLE_NAME + " Join " + TABLE_NAME2
+				+ " ON username=utente " + " Join " + TABLE_NAME3 + " ON " + TABLE_NAME2 + ".via = " + TABLE_NAME3 + ".via"
+				+ " AND " + TABLE_NAME2 + ".cap= " + TABLE_NAME3 + ".cap" + " AND " + TABLE_NAME2 + ".numero_civico = "
+				+ TABLE_NAME3 + ".numero_civico "
+				+" WHERE utente.username = ? " ;
 
 		Connection connection = null;
 		try {
@@ -47,6 +47,7 @@ public class AddressDAO {
 			preparedStatement.setString(1, user.getUsername());
 
 			rs = preparedStatement.executeQuery();
+			
 
 			while (rs.next()) {
 				AddressBean bean = new AddressBean();
