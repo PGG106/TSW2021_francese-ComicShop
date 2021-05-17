@@ -22,7 +22,7 @@ tbody td{
 
 
 
- thead.catalogo tr{
+thead.catalogo tr{
 	height: 50px;
 	background: #FFED86;
 	font-size: 16px;
@@ -103,6 +103,40 @@ tfoot.address td{
 	text-align: center;
 }
 
+thead.paymentMethod tr{
+	height: 50px;
+	background: #FFED86;
+	font-size: 16px;
+	border:1px solid black
+}
+
+tbody.paymentMethod tr{
+	background-color:#f0f0f5;
+	border: 1px solid black;
+	border-spacing:5px;
+	text-align:center;
+	height: 50px; 
+}
+
+tfoot.paymentMethod td{
+	height: 50px;
+	text-align: center;
+}
+
+thead.paymentMethod tr{
+	height: 50px;
+	background: #FFED86;
+	font-size: 16px;
+	border:1px solid black
+}
+
+tbody.paymentMethod tr {
+	background-color:#f0f0f5;
+	border: 1px solid black; 
+}
+
+tbody.paymentMethod tr:hover {background-color: #a992d3 ;}
+
 .wrapper {
 	text-align: center;
 }
@@ -120,11 +154,33 @@ tfoot.address td{
   	cursor: pointer;
 }
 
-.btn:hover {
+.btn-center {
+	margin-top: 15px;
+ 	background-color: #a6a6c4;
+ 	border: none;
+ 	color: white;
+ 	padding: 15px 32px;
+	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 16px;
+  	cursor: pointer;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-item + .flex-item {
+  margin-left: 10px;
+}
+
+.btn:hover, .btn-center:hover {
 	background-color: #a992d3;
 }
 
-div.login, div.catalogo, div.register, div.address {
+div.login, div.catalogo, div.register, div.address, div.paymentMethod {
 	width: 300px;
   	border: 1px solid black;
   	padding: 12px 20px 12px;
@@ -132,6 +188,8 @@ div.login, div.catalogo, div.register, div.address {
 	margin-right: auto;
 	background-color:#f0f0f5;
 }
+
+
 
 div.address {
 	display: block;
@@ -143,6 +201,8 @@ input.register[type=email], input.register[type=password],
 input.catalogo[type=date], input.register[type=date],
 input.catalogo[type=number], input.register[type=number],
 input.address[type=text], input.address[type=number],
+input.paymentMethod[type=text], input.paymentMethod[type=number],
+input.paymentMethod[type=date],
 select {
 	
   	width: 100%;
@@ -180,6 +240,25 @@ div.container {
 	color:red;
 }
 
+
+
+.select {
+	margin: 20px;
+  	width: 300px;
+  	padding: 5px 35px 5px 5px;
+  	font-size: 16px;
+  	border: 1px solid #CCC;
+  	height: 34px;
+}
+
+.select-large {
+	margin: 20px;
+  	width: 600px;
+  	padding: 5px 35px 5px 5px;
+  	font-size: 16px;
+  	border: 1px solid #CCC;
+  	height: 34px;
+}
 #checkout
 {
     transition: .5s ease;
