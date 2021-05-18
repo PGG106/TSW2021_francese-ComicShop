@@ -30,16 +30,14 @@ public class PaymentMethodControl extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
-		int tipo = Integer.parseInt(request.getParameter("tipo"));
+		int tipo = (request.getParameter("tipo")=="carta di credito" ) ? 0: 1;
 		String titolare = request.getParameter("titolare");
-		boolean predefinito = Boolean.parseBoolean(request.getParameter("predefinito"));
+		boolean predefinito = false;
 		String indirizzo_fatturazione = request.getParameter("indirizzo_fatturazione");
 		long numero = Long.parseLong(request.getParameter("numero"));
 		LocalDate scadenza = LocalDate.parse(request.getParameter("scadenza"));
 		PaymentMethodBean paymentMethod = new PaymentMethodBean();
 		UserBean user = (UserBean) request.getSession().getAttribute("currentSessionUser");
-		paymentMethod.setId(id);
 		paymentMethod.setTipo(tipo);
 		paymentMethod.setTitolare(titolare);
 		paymentMethod.setPredefinito(predefinito);

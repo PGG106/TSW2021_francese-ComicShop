@@ -13,7 +13,7 @@ import javax.servlet.http.*;
 /**
  * Servlet Filter implementation class LoginFiler
  */
-@WebFilter(urlPatterns = { "/Ordine/*" ,"/CheckoutPage.jsp/*"})
+@WebFilter(urlPatterns = { "/Ordine/*" ,"/CheckoutPage.jsp/*","/OrderHistory.jsp/*"})
 public class LoginFilter implements Filter {
 	@Override
 	public void init(FilterConfig config) throws ServletException {

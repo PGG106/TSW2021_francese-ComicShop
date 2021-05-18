@@ -14,6 +14,7 @@ public class OrderDAO {
 	static ResultSet rs = null;
 	static int numordine;
 	private static final String TABLE_NAME = "ordine";
+	private static final int IVA=22;
 
 	public OrderDAO() {
 		super();
@@ -32,28 +33,29 @@ public class OrderDAO {
 		}
 	}
 
-	public synchronized  void doSave(UserBean bean, Cart cart) {
+	public synchronized  void doSave(UserBean bean, Object indirizzo, Object pagamento, Cart cart) {
 
 		PreparedStatement preparedStatement = null;
 
 		
-		String indirizzo_spedizione;
-		String metodo_di_pagamento;
-		String insertQuery = "INSERT INTO " + TABLE_NAME + "VALUES(?,?,?,?,?,?,?)";
+		String indirizzo_spedizione=String.valueOf(indirizzo);
+		String metodo_di_pagamento=String.valueOf(pagamento);
+		String insertQuery = "INSERT INTO " + TABLE_NAME +  " ( costo_totale, indirizzo_spedizione, data_spedizione, "
+				+ "metodo_di_pagamento, username, data_ordine )"+ " VALUES(?,?,?,?,?,?)";
+				
 
 		// connect to DB
 		Connection connection = null;
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertQuery);
-			preparedStatement.setLong(1, numordine++);
-			preparedStatement.setFloat(2, cart.getTotalCost());
-			preparedStatement.setString(3, "lorem ipsum");
-			preparedStatement.setDate(4, Date.valueOf(LocalDate.now()));
-			preparedStatement.setString(5, "lorem ipsum");
-			preparedStatement.setString(6, bean.getUsername());
-			preparedStatement.setDate(7, Date.valueOf(LocalDate.now()));
-			preparedStatement.executeQuery();
+			preparedStatement.setFloat(1, cart.getTotalCost());
+			preparedStatement.setString(2, indirizzo_spedizione);
+			preparedStatement.setDate(3, Date.valueOf(LocalDate.now()));
+			preparedStatement.setString(4, metodo_di_pagamento);
+			preparedStatement.setString(5, bean.getUsername());
+			preparedStatement.setDate(6, Date.valueOf(LocalDate.now()));
+			preparedStatement.executeUpdate();
 
 		}
 
@@ -77,6 +79,37 @@ public class OrderDAO {
 
 			connection = null;
 		}
+		
+		try {
+			connection = ds.getConnection();
+			int autoIncKeyFromFunc = -1;
+			preparedStatement = connection.prepareStatement("SELECT LAST_INSERT_ID()");
+			rs = preparedStatement.executeQuery();
+			if (rs.next()) {
+			    autoIncKeyFromFunc = rs.getInt(1);
+			} else {
+			    // throw an exception from here
+			}
+			for (ItemOrder product : cart.getProducts())
+			{
+				preparedStatement=connection.prepareStatement("INSERT INTO  CONTENUTO VALUES (?,?,?,?,?,?)");
+				preparedStatement.setLong(1, autoIncKeyFromFunc);
+				preparedStatement.setInt(2, product.getId());
+				preparedStatement.setInt(3, IVA);
+				preparedStatement.setFloat(4, product.getPrezzo());
+				preparedStatement.setString(5, product.getNome());
+				preparedStatement.setInt(6, product.getNumItems());
+				preparedStatement.executeUpdate();
+				
+			}
+		} catch (SQLException e) {
+			System.out.print("inserimento ordine fallito");
+			e.printStackTrace();
+		}
+		
+		
+		
+		
 	}
 
 	public synchronized OrderBean getOrderById(String OrderID) {
@@ -95,6 +128,7 @@ public class OrderDAO {
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
+				bean.setId(rs.getLong("numero_ordine"));
 				bean.setCosto_totale(rs.getFloat("costo_totale"));
 				bean.setNum_ordine(rs.getLong("numero_ordine"));
 				bean.setData_spedizione(rs.getDate("data_spedizione").toLocalDate());
@@ -132,18 +166,18 @@ public class OrderDAO {
 
 		List<OrderBean> orders = new LinkedList<OrderBean>();
 
-		String selectSQL = "SELECT * FROM " + TABLE_NAME +" WHERE username = "+user.getUsername() ;
+		String selectSQL = "SELECT * FROM " + TABLE_NAME +" WHERE username = ? ";
 
 
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
-
+			preparedStatement.setString(1, user.getUsername());
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
 				OrderBean bean = new OrderBean();
-
+				bean.setId(rs.getLong("numero_ordine"));
 				bean.setCosto_totale(rs.getFloat("costo_totale"));
 				bean.setNum_ordine(rs.getLong("numero_ordine"));
 				bean.setData_spedizione(rs.getDate("data_spedizione").toLocalDate());

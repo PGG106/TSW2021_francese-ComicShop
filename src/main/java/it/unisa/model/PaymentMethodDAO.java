@@ -37,15 +37,13 @@ public class PaymentMethodDAO {
 		List<PaymentMethodBean> Methods = new LinkedList<PaymentMethodBean>();
 		PreparedStatement preparedStatement = null;
 		String SearchQuery = "Select " + TABLE_NAME3 + ".*" + " FROM " + TABLE_NAME + " Join " + TABLE_NAME2
-				+ " ON username=utente " + " Join " + TABLE_NAME3 + " ON " + TABLE_NAME2 + ".metodo_di_pagamento = " + TABLE_NAME3 + ".numero"
-				+" WHERE "+TABLE_NAME+".username = ?";
-				
+				+ " ON username=utente " + " Join " + TABLE_NAME3 + " ON " + TABLE_NAME2 + ".metodo_di_pagamento = " + TABLE_NAME3 + ".id"
+				+" WHERE "+TABLE_NAME+".username = ?";	
 		Connection connection = null;
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(SearchQuery);
 			preparedStatement.setString(1, user.getUsername());
-
 			rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
@@ -137,15 +135,24 @@ public class PaymentMethodDAO {
 
 		try {
 			preparedStatement.close();
-
 			insertSQL = "INSERT INTO " + TABLE_NAME2 + " (utente,metodo_di_pagamento) VALUES (?, ?)";
+			connection = ds.getConnection();
+			int autoIncKeyFromFunc = -1;
+			preparedStatement = connection.prepareStatement("SELECT LAST_INSERT_ID()");
+		    rs = preparedStatement.executeQuery();
+		    if (rs.next()) {
+		        autoIncKeyFromFunc = rs.getInt(1);
+		    } else {
+		        // throw an exception from here
+		    }
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setString(1, user.getUsername());
-			preparedStatement.setInt(2, PaymentMethod.getId());
+			preparedStatement.setInt(2, autoIncKeyFromFunc);
 			preparedStatement.executeUpdate();
 
 		} catch (Exception e) {
 			System.out.print("could not update table " + TABLE_NAME2 + " to reflect changes");
+			System.out.print(e);
 		}
 		finally {
 			try {

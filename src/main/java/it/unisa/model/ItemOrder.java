@@ -44,8 +44,8 @@ public class ItemOrder {
   }
   
   
-  public double getPrezzo() {
-    return(Math.round(getItem().getPrezzo()*100.0))/100.0;
+  public float getPrezzo() {
+    return (float) ((Math.round(getItem().getPrezzo()*100.0))/100.0);
   }
   
   public int getNumItems() {
@@ -64,7 +64,7 @@ public class ItemOrder {
     setNumItems(0);
   }
 
-  public double getTotalCost() {
-    return (Math.round(getNumItems() * getPrezzo()*100)/100.00);
+  public float getTotalCost() {
+    return (float) (Math.round(getNumItems() * getPrezzo()*100)/100.00);
   }
 }

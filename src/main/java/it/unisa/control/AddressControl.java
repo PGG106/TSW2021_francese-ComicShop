@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mysql.cj.Session;
 
 import it.unisa.model.*;
 
@@ -47,7 +46,7 @@ public class AddressControl extends HttpServlet {
 		address.setProvincia(provincia);
 		AddressDAO.doSave(user, address);
 		
-		//response.sendRedirect("CheckoutPage.jsp");
+		response.sendRedirect("CheckoutPage.jsp");
 		
 	}
 
