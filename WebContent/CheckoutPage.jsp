@@ -65,7 +65,7 @@
 			<%
 			for (String indirizzo : indirizzi) {
 			%>
-			<option><%=indirizzo%>
+			<option   value=" 12 "> <%=indirizzo%>
 			</option>
 			<%
 			}
@@ -93,7 +93,7 @@
 			<%
 			for (String metodoPagamento : metodiPagamento) {
 			%>
-			<option><%=metodoPagamento%>
+			<option value="<%=metodoPagamento%>"><%=metodoPagamento%>
 			</option>
 
 			<%

@@ -38,8 +38,8 @@ OrderBean order = (OrderBean) request.getAttribute("ordine");
 			<tbody class=details>
 				<tr>
 					<td><%=order.getNum_ordine()%></td>
-					<td><%=order.getCosto_totale()%></td>
-					<td><%=order.getIndirizzo_spedizione()%> &euro;</td>
+					<td><%=order.getCosto_totale()%> &euro; </td>
+					<td><%=order.getIndirizzo_spedizione()%></td>
 					<td><%=order.getData_spedizione()%></td>
 					<td><%=order.getUsername()%></td>
 					<td><%=order.getData_ordine()%></td>

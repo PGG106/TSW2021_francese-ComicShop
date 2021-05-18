@@ -36,6 +36,7 @@
 			<%
 			}
 			%>
-		
+		</tbody>
+		</table>
 </body>
 </html>
