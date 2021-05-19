@@ -7,7 +7,7 @@ import java.util.List;
 
 
 public class Cart {
-	ProductModelDS model= new ProductModelDS();
+	ProductDAO model= new ProductDAO();
 	private List<ItemOrder> products;
 
 	public Cart() {

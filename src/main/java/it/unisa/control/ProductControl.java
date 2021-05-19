@@ -11,7 +11,7 @@ import javax.servlet.http.*;
 import it.unisa.model.Cart;
 import it.unisa.model.ProductBean;
 import it.unisa.model.ProductModel;
-import it.unisa.model.ProductModelDS;
+import it.unisa.model.ProductDAO;
 
 /**
  * Servlet implementation class ProductControl
@@ -21,7 +21,7 @@ public class ProductControl extends HttpServlet {
 
 	
 
-	static ProductModel model = new ProductModelDS();
+	static ProductModel model = new ProductDAO();
 
 	public ProductControl() {
 		super();
@@ -97,7 +97,7 @@ public class ProductControl extends HttpServlet {
 			System.out.println("Error:" + e.getMessage());
 		}
 
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/ProductView.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Homepage.jsp");
 		dispatcher.include(request, response);
 	}
 

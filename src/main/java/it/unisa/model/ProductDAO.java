@@ -13,7 +13,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-public class ProductModelDS implements ProductModel {
+public class ProductDAO implements ProductModel {
 
 	private static DataSource ds;
 
@@ -37,7 +37,7 @@ public class ProductModelDS implements ProductModel {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		String insertSQL = "INSERT INTO " + ProductModelDS.TABLE_NAME
+		String insertSQL = "INSERT INTO " + ProductDAO.TABLE_NAME
 				+ " (id,nome,prezzo, saldo, data_di_uscita,voto,descrizione,peso,quantita ) VALUES (?, ?, ?, ?,?,?,?,?,?)";
 
 		try {
@@ -74,7 +74,7 @@ public class ProductModelDS implements ProductModel {
 
 		ProductBean bean = new ProductBean();
 
-		String selectSQL = "SELECT * FROM " + ProductModelDS.TABLE_NAME + " WHERE id = ?";
+		String selectSQL = "SELECT * FROM " + ProductDAO.TABLE_NAME + " WHERE id = ?";
 
 		try {
 			connection = ds.getConnection();
@@ -115,7 +115,7 @@ public class ProductModelDS implements ProductModel {
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM " + ProductModelDS.TABLE_NAME + " WHERE id = ?";
+		String deleteSQL = "DELETE FROM " + ProductDAO.TABLE_NAME + " WHERE id = ?";
 
 		try {
 			connection = ds.getConnection();
@@ -143,7 +143,7 @@ public class ProductModelDS implements ProductModel {
 
 		Collection<ProductBean> products = new LinkedList<ProductBean>();
 
-		String selectSQL = "SELECT * FROM " + ProductModelDS.TABLE_NAME;
+		String selectSQL = "SELECT * FROM " + ProductDAO.TABLE_NAME;
 
 		if (order != null && !order.equals("")) {
 			selectSQL += " ORDER BY " + order;

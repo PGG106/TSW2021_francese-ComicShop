@@ -33,14 +33,13 @@
 
 	<%
 	if (cart != null) {
+
+		LinkedList<String> indirizzi = (LinkedList<String>) session.getAttribute("indirizzi");
+		ArrayList<String> metodiPagamento = (ArrayList<String>) session.getAttribute("metodi");
 	%>
 
 
-	<%
-	UserBean user = (UserBean) session.getAttribute("currentSessionUser");
-	AddressDAO addressDAO = new AddressDAO();
-	PaymentMethodDAO paymentMethodDAO = new PaymentMethodDAO();
-	%>
+
 	<h1>Riepilogo dell'ordine</h1>
 	<br>
 
@@ -48,24 +47,15 @@
 
 	<form>
 
-		<%
-		List<AddressBean> addresses = addressDAO.getAddresses(user);
-		List<String> indirizzi = new ArrayList<String>();
-		for (AddressBean address : addresses) {
-			String indirizzo;
-			indirizzo = address.getVia() + " " + address.getNumero_civico() + " " + address.getCittà() + " "
-			+ address.getProvincia() + " " + address.getCap();
 
-			indirizzi.add(indirizzo);
-		}
-		%>
 
 
 		<select id="indirizzo" name="indirizzo" class=select-large>
 			<%
 			for (String indirizzo : indirizzi) {
 			%>
-			<option   value=" 12 "> <%=indirizzo%>
+			<option value="<%=indirizzo%>">
+				<%=indirizzo%>
 			</option>
 			<%
 			}
@@ -73,20 +63,6 @@
 		</select> <a href=AddressRegistration.jsp>Inserisci un indirizzo</a> <br>
 		<h2>Metodo di pagamento</h2>
 
-
-		<%
-		List<PaymentMethodBean> paymentMethods = paymentMethodDAO.getPaymentMethods(user);
-
-		List<String> metodiPagamento = new ArrayList<String>();
-		for (PaymentMethodBean paymentMethod : paymentMethods) {
-			String metodoPagamento;
-			metodoPagamento = paymentMethod.getTipo() + " " + paymentMethod.getTitolare() + " "
-			+ paymentMethod.getIndirizzo_fatturazione() + " " + paymentMethod.getNumero() + " "
-			+ paymentMethod.getScadenza();
-
-			metodiPagamento.add(metodoPagamento);
-		}
-		%>
 
 
 		<select id="metodoPagamento" name="pagamento" class=select-large>

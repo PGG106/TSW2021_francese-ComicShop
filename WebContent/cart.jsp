@@ -84,7 +84,7 @@
 	<br>
 	
 	<div class=wrapper>
-	<form class=cart action="CheckoutPage.jsp" method="get" id="checkout">
+	<form class=cart action="CheckOut" method="get" id="checkout">
 	<button class=btn type="submit">Checkout</button>
 	</form>
 	</div>
