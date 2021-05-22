@@ -1,13 +1,14 @@
 <%@page import="org.apache.tomcat.jni.Address"%>
 <%@page import="it.unisa.model.*"%>
 <%@page import="java.util.*"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="./fragments/header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<link href="NewFile.css" rel="stylesheet" type="text/css">
+<meta charset="UTF-8">
+<link href="./style/style.css" rel="stylesheet" type="text/css">
 <title>Checkout</title>
 </head>
 <body>
@@ -43,13 +44,14 @@
 	<h1>Riepilogo dell'ordine</h1>
 	<br>
 
-	<h2>Indirizzo di consegna</h2>
 
+	
+	<div class=div-num-ceck><h3>Indirizzo di consegna</h3></div>
+	
 	<form>
 
 
-
-
+	
 		<select id="indirizzo" name="indirizzo" class=select-large>
 			<%
 			for (String indirizzo : indirizzi) {
@@ -61,9 +63,10 @@
 			}
 			%>
 		</select> <a href=AddressRegistration.jsp>Inserisci un indirizzo</a> <br>
-		<h2>Metodo di pagamento</h2>
-
-
+		
+		
+		
+		<h3>Metodo di pagamento</h3>
 
 		<select id="metodoPagamento" name="pagamento" class=select-large>
 			<%
@@ -78,13 +81,13 @@
 		</select> <a href=PaymentMethodRegistration.jsp>Inserisci un metodo di
 			pagamento</a><br>
 
-		<h2>Rivedi gli articoli</h2>
+		<h3>Rivedi gli articoli</h3>
 		<div class=checkout>
 			<table class=checkout>
 				<thead>
 					<tr>
 						<th>Articolo:</th>
-						<th>Quantità:</th>
+						<th>QuantitÃ :</th>
 						<th>Prezzo:</th>
 						<th>Azioni:</th>
 					</tr>
@@ -137,4 +140,5 @@
 	%>
 
 </body>
+<%@ include file="./fragments/footer.html" %>
 </html>

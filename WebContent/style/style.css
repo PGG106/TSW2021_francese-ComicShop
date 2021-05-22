@@ -1,17 +1,20 @@
-html {
-	font-family: 'Lato', sans-serif;
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,300,700);
+
+* {
+  font-family: Open Sans;
 }
 
 table {
 	margin-left: auto;
 	margin-right: auto;
 	border: 1px solid black; 
-	border-collapse:collapse;
+	border-collapse: collapse;
 	overflow: hidden;
 	max-width: 800px;
 	width: 100%;
 	margin: 0 auto;
 	position: positional;
+	border-radius: 6px;
 	
 }
 
@@ -226,7 +229,7 @@ textarea.catalogo, textarea.register  select {
 
 
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
 	text-align: center;
 	clear: both;
 }
@@ -236,11 +239,18 @@ div.container {
 	justify-content: space-between;
 	align-items: flex-end;
 }
-.error{
-	color:red;
+
+.div-num-check {
+	display: inline-block;
+	width: 100px;
+	min-height: 100px;
 }
 
-
+.error-login{
+	color:red;
+	font-size: 5px;
+	text-align: center;
+}
 
 .select {
 	margin: 20px;
@@ -263,5 +273,5 @@ div.container {
 {
     transition: .5s ease;
     top: 50%;
-    left: 45%;	
+    left: 45%;
 }

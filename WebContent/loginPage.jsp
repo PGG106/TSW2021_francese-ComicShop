@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="./fragments/header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
-<link href="NewFile.css" rel="stylesheet" type="text/css">
-<meta charset="ISO-8859-1">
+<link href="./style/style.css" rel="stylesheet" type="text/css">
+<meta charset="UTF-8">
 <title>Login</title>
 </head>
 <body>
@@ -18,7 +19,7 @@
 
 	<h2>Accedi / Registrati</h2>
 	
-	<h3>Hai già un account?</h3>
+	<h3 style="text-align: center">Hai giÃ  un account?</h3>
 	
 <div class=login>
 <form action="Login" class=login>
@@ -29,4 +30,5 @@
 </form>
 </div>
 </body>
+<%@ include file="./fragments/footer.html" %>
 </html>

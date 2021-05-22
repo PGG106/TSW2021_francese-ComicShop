@@ -1,11 +1,13 @@
 <%@page import="java.util.*"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@page import="it.unisa.model.*"%>
+<%@ include file="./fragments/header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
+<link href="./style/style.css" rel="stylesheet" type="text/css">
 <title>Storico Ordini</title>
 </head>
 <body>
@@ -49,4 +51,5 @@
 	}
 	%>
 </body>
+<%@ include file="./fragments/footer.html" %>
 </html>

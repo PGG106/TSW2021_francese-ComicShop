@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.Cart, it.unisa.model.ItemOrder"%>
-
+<%@ page contentType="text/html; charset=ISO-8859-1" import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.Cart, it.unisa.model.ItemOrder"%>
+<%@ include file="./fragments/header.jsp" %>
     
 <%
 	
@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link href="NewFile.css" rel="stylesheet" type="text/css">
+<link href="./style/style.css" rel="stylesheet" type="text/css">
 <title>Dettagli</title>
 
 </head>
@@ -34,7 +34,7 @@
 			<th>Voto</th>
 			<th>Descrizione</th>
 			<th>Peso</th>
-			<th>QuantitÃ </th>
+			<th>Quantità</th>
 		</tr>
 		</thead>
 		
@@ -47,7 +47,7 @@
 			<td><%=product.getVoto()%></td>
 			<td><%=product.getDescrizione()%></td>
 			<td><%=product.getPeso()%></td>
-			<td><%=product.getQuantitÃ ()%></td>
+			<td><%=product.getQuantità()%></td>
 		</tr>
 		</tbody>
 	</table>
@@ -66,4 +66,5 @@
 %>
 	
 </body>
+<%@ include file="./fragments/footer.html" %>
 </html>
