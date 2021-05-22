@@ -17,7 +17,7 @@ import it.unisa.model.UserBean;
 /**
  * Servlet Filter implementation class AdminFilter
  */
-@WebFilter(urlPatterns = { "/Admin/*" })
+@WebFilter(urlPatterns = { "/Admin/*" ,"/Catalogo/*","/OrderArchive/*"})
 public class AdminFilter implements Filter {
 
     /**

@@ -3,14 +3,12 @@ package it.unisa.control;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
 import it.unisa.model.Cart;
 import it.unisa.model.ProductBean;
-import it.unisa.model.ProductModel;
 import it.unisa.model.ProductDAO;
 
 /**
@@ -19,9 +17,7 @@ import it.unisa.model.ProductDAO;
 public class ProductControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
-
-	static ProductModel model = new ProductDAO();
+	static ProductDAO model = new ProductDAO();
 
 	public ProductControl() {
 		super();
@@ -52,13 +48,61 @@ public class ProductControl extends HttpServlet {
 					request.removeAttribute("product");
 					request.setAttribute("product", model.doRetrieveByKey(id));
 					request.getRequestDispatcher("productDetails.jsp").forward(request, response);
-					
-				} else if (action.equalsIgnoreCase("delete")) {
+
+				} else if (action.equalsIgnoreCase("Update")) {
+					int id = Integer.parseInt(request.getParameter("id"));
+					ProductBean product = new ProductBean();
+					product = model.doRetrieveByKey(id);
+					Integer Newid = Integer.parseInt(request.getParameter("NewID"));
+					String nome = request.getParameter("nome");
+					Float prezzo = Float.parseFloat(request.getParameter("prezzo"));
+					Integer saldo = Integer.parseInt(request.getParameter("saldo"));
+					LocalDate data_uscita = LocalDate.parse(request.getParameter("data"));
+					Float voto = Float.parseFloat(request.getParameter("voto"));
+					String descrizione = request.getParameter("descrizione");
+					Float peso = Float.parseFloat(request.getParameter("peso"));
+					Integer quantità = Integer.parseInt(request.getParameter("quantita"));
+
+					if (Newid != null) {
+						product.setId(Newid);
+					}
+
+					if (nome != null) {
+						product.setNome(nome);
+					}
+
+					if (prezzo != null) {
+						product.setPrezzo(prezzo);
+					}
+
+					if (saldo != null) {
+						product.setSaldo(saldo);
+					}
+					if (data_uscita != null) {
+						product.setData_uscita(data_uscita);
+					}
+					if (voto != null) {
+						product.setVoto(voto);
+					}
+					if (descrizione != null) {
+						product.setDescrizione(descrizione);
+					}
+					if (peso != null) {
+						product.setPeso(peso);
+					}
+					if (quantità != null) {
+						product.setQuantità(quantità);
+					}
+
+					model.Alter(id, product);
+
+				}
+
+				else if (action.equalsIgnoreCase("delete")) {
 					int id = Integer.parseInt(request.getParameter("id"));
 					model.doDelete(id);
 				} else if (action.equalsIgnoreCase("insert")) {
-					
-					
+
 					int id = Integer.parseInt(request.getParameter("id"));
 					String nome = request.getParameter("nome");
 					float prezzo = Float.parseFloat(request.getParameter("prezzo"));

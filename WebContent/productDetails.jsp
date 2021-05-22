@@ -27,7 +27,6 @@
 	<table>
 	<thead class=details>
 		<tr>
-			<th>Id</th>
 			<th>Nome</th>
 			<th>Prezzo</th>
 			<th>Saldo</th>
@@ -41,7 +40,6 @@
 		
 		<tbody class=details>
 		<tr>
-			<td><%=product.getId()%></td>
 			<td><%=product.getNome()%></td>
 			<td><%=product.getPrezzo()%> &euro;</td>
 			<td><%=product.getSaldo()%></td>

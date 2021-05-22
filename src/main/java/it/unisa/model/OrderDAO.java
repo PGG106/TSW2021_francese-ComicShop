@@ -14,7 +14,8 @@ public class OrderDAO {
 	static ResultSet rs = null;
 	static int numordine;
 	private static final String TABLE_NAME = "ordine";
-	private static final int IVA=22;
+	private static final String TABLE_NAME2 = "contenuto";
+	private static final int IVA = 22;
 
 	public OrderDAO() {
 		super();
@@ -33,16 +34,14 @@ public class OrderDAO {
 		}
 	}
 
-	public synchronized  void doSave(UserBean bean, Object indirizzo, Object pagamento, Cart cart) {
+	public synchronized void doSave(UserBean bean, Object indirizzo, Object pagamento, Cart cart) {
 
 		PreparedStatement preparedStatement = null;
 
-		
-		String indirizzo_spedizione=String.valueOf(indirizzo);
-		String metodo_di_pagamento=String.valueOf(pagamento);
-		String insertQuery = "INSERT INTO " + TABLE_NAME +  " ( costo_totale, indirizzo_spedizione, data_spedizione, "
-				+ "metodo_di_pagamento, username, data_ordine )"+ " VALUES(?,?,?,?,?,?)";
-				
+		String indirizzo_spedizione = String.valueOf(indirizzo);
+		String metodo_di_pagamento = String.valueOf(pagamento);
+		String insertQuery = "INSERT INTO " + TABLE_NAME + " ( costo_totale, indirizzo_spedizione, data_spedizione, "
+				+ "metodo_di_pagamento, username, data_ordine )" + " VALUES(?,?,?,?,?,?)";
 
 		// connect to DB
 		Connection connection = null;
@@ -79,20 +78,19 @@ public class OrderDAO {
 
 			connection = null;
 		}
-		
+
 		try {
 			connection = ds.getConnection();
 			int autoIncKeyFromFunc = -1;
 			preparedStatement = connection.prepareStatement("SELECT LAST_INSERT_ID()");
 			rs = preparedStatement.executeQuery();
 			if (rs.next()) {
-			    autoIncKeyFromFunc = rs.getInt(1);
+				autoIncKeyFromFunc = rs.getInt(1);
 			} else {
-			    // throw an exception from here
+				// throw an exception from here
 			}
-			for (ItemOrder product : cart.getProducts())
-			{
-				preparedStatement=connection.prepareStatement("INSERT INTO  CONTENUTO VALUES (?,?,?,?,?,?)");
+			for (ItemOrder product : cart.getProducts()) {
+				preparedStatement = connection.prepareStatement("INSERT INTO " + TABLE_NAME2 + " VALUES (?,?,?,?,?,?)");
 				preparedStatement.setLong(1, autoIncKeyFromFunc);
 				preparedStatement.setInt(2, product.getId());
 				preparedStatement.setInt(3, IVA);
@@ -100,16 +98,13 @@ public class OrderDAO {
 				preparedStatement.setString(5, product.getNome());
 				preparedStatement.setInt(6, product.getNumItems());
 				preparedStatement.executeUpdate();
-				
+
 			}
 		} catch (SQLException e) {
 			System.out.print("inserimento ordine fallito");
 			e.printStackTrace();
 		}
-		
-		
-		
-		
+
 	}
 
 	public synchronized OrderBean getOrderById(String OrderID) {
@@ -123,7 +118,7 @@ public class OrderDAO {
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setString(1, OrderID);
+			preparedStatement.setInt(1, Integer.valueOf(OrderID));
 
 			ResultSet rs = preparedStatement.executeQuery();
 
@@ -149,13 +144,12 @@ public class OrderDAO {
 					preparedStatement.close();
 				if (connection != null)
 					connection.close();
-			} 
-			catch (Exception e) {
+			} catch (Exception e) {
 				System.out.println("Error:" + e.getMessage());
 			}
-				
-			}
-		
+
+		}
+
 		return bean;
 
 	}
@@ -166,8 +160,7 @@ public class OrderDAO {
 
 		List<OrderBean> orders = new LinkedList<OrderBean>();
 
-		String selectSQL = "SELECT * FROM " + TABLE_NAME +" WHERE username = ? ";
-
+		String selectSQL = "SELECT * FROM " + TABLE_NAME + " WHERE username = ? ";
 
 		try {
 			connection = ds.getConnection();
@@ -185,27 +178,210 @@ public class OrderDAO {
 				bean.setIndirizzo_spedizione(rs.getString("indirizzo_spedizione"));
 				bean.setUsername(rs.getString("username"));
 				bean.setData_ordine(rs.getDate("data_ordine").toLocalDate());
-				orders .add(bean);
+				orders.add(bean);
 			}
+		} catch (Exception ex) {
+			System.out.println("Errore,impossibile recuperare ordini " + ex);
 		}
-			catch (Exception ex) {
-				System.out.println("Inserimento ordine fallito " + ex);
+
+		finally {
+
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+				System.out.println("Errore,impossibile recuperare ordini " + e);
 			}
 
-		 finally {
-			
-				try {
-					if (preparedStatement != null)
-						preparedStatement.close();
-					if (connection != null)
-						connection.close();
-				} catch (Exception e) {
-					System.out.println("Inserimento ordine fallito " + e);
-				}
-			
+		}
+
+		return orders;
+	}
+
+	public synchronized List<OrderBean> getAllOrders() {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		List<OrderBean> orders = new LinkedList<OrderBean>();
+
+		String selectSQL = "SELECT * FROM " + TABLE_NAME;
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				OrderBean bean = new OrderBean();
+				bean.setId(rs.getLong("numero_ordine"));
+				bean.setCosto_totale(rs.getFloat("costo_totale"));
+				bean.setNum_ordine(rs.getLong("numero_ordine"));
+				bean.setData_spedizione(rs.getDate("data_spedizione").toLocalDate());
+				bean.setMetodo_di_pagamento(rs.getString("metodo_di_pagamento"));
+				bean.setIndirizzo_spedizione(rs.getString("indirizzo_spedizione"));
+				bean.setUsername(rs.getString("username"));
+				bean.setData_ordine(rs.getDate("data_ordine").toLocalDate());
+				orders.add(bean);
 			}
-		
-		return orders ;
+		} catch (Exception ex) {
+			System.out.println("Inserimento ordine fallito " + ex);
+		}
+
+		finally {
+
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+				System.out.println("Errore,impossibile recuperare ordini " + e);
+			}
+
+		}
+
+		return orders;
+
+	}
+
+	public synchronized List<OrderBean> getAllOrders(LocalDate startdate, LocalDate enddate) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		List<OrderBean> orders = new LinkedList<OrderBean>();
+
+		String selectSQL = "SELECT * FROM " + TABLE_NAME +" WHERE data_ordine BETWEEN  CAST(? AS DATE) AND CAST(? AS DATE)";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setDate(1,Date.valueOf(startdate) );
+			preparedStatement.setDate(2,Date.valueOf(enddate) );
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				OrderBean bean = new OrderBean();
+				bean.setId(rs.getLong("numero_ordine"));
+				bean.setCosto_totale(rs.getFloat("costo_totale"));
+				bean.setNum_ordine(rs.getLong("numero_ordine"));
+				bean.setData_spedizione(rs.getDate("data_spedizione").toLocalDate());
+				bean.setMetodo_di_pagamento(rs.getString("metodo_di_pagamento"));
+				bean.setIndirizzo_spedizione(rs.getString("indirizzo_spedizione"));
+				bean.setUsername(rs.getString("username"));
+				bean.setData_ordine(rs.getDate("data_ordine").toLocalDate());
+				orders.add(bean);
+			}
+		} catch (Exception ex) {
+			System.out.println("Inserimento ordine fallito " + ex);
+		}
+
+		finally {
+
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+				System.out.println("Errore,impossibile recuperare ordini " + e);
+			}
+
+		}
+
+		return orders;
+	}
+
+	public synchronized LinkedList<ContentBean> getContentByOrderId(String OrderID) {
+		PreparedStatement preparedStatement = null;
+		Connection connection = null;
+
+		LinkedList<ContentBean> products = new LinkedList<ContentBean>();
+
+		String selectSQL = "SELECT contenuto.iva, contenuto.prezzo_acquisto, contenuto.nome_art,contenuto.num_art_acq                                          from contenuto  where contenuto.ordine = ?";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setInt(1, Integer.valueOf(OrderID));
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				ContentBean bean = new ContentBean();
+				bean.setIva(rs.getInt("iva"));
+				bean.setNome_art(rs.getString("Nome_art"));
+				bean.setNum_art_acq(rs.getInt("Num_art_acq"));
+				bean.setPrezzo_acquisto(rs.getFloat("Prezzo_acquisto"));
+				products.add(bean);
+
+			}
+		}
+
+		catch (Exception e) {
+			System.out.println("Error:" + e.getMessage());
+		}
+
+		finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+				System.out.println("Error:" + e.getMessage());
+			}
+
+		}
+
+		return products;
+	}
+
+	public List<OrderBean> getAllOrders(String username) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		List<OrderBean> orders = new LinkedList<OrderBean>();
+
+		String selectSQL = "SELECT * FROM " + TABLE_NAME +" WHERE username = ?";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1,username );
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				OrderBean bean = new OrderBean();
+				bean.setId(rs.getLong("numero_ordine"));
+				bean.setCosto_totale(rs.getFloat("costo_totale"));
+				bean.setNum_ordine(rs.getLong("numero_ordine"));
+				bean.setData_spedizione(rs.getDate("data_spedizione").toLocalDate());
+				bean.setMetodo_di_pagamento(rs.getString("metodo_di_pagamento"));
+				bean.setIndirizzo_spedizione(rs.getString("indirizzo_spedizione"));
+				bean.setUsername(rs.getString("username"));
+				bean.setData_ordine(rs.getDate("data_ordine").toLocalDate());
+				orders.add(bean);
+			}
+		} catch (Exception ex) {
+			System.out.println("Inserimento ordine fallito " + ex);
+		}
+
+		finally {
+
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+				System.out.println("Errore,impossibile recuperare ordini " + e);
+			}
+
+		}
+
+		return orders;
 	}
 
 }

@@ -182,4 +182,46 @@ public class ProductDAO implements ProductModel {
 		return products;
 	}
 
+	public synchronized void Alter(long id, ProductBean product) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		String alterStatement = "UPDATE `comicshop`.`articolo` SET `id` = ?, `nome` = ?, "
+				+ "`prezzo` = ?, `saldo` = ?, `data_di_uscita` = ?, "
+				+ "`voto` = ?, `descrizione` = ?, `peso` = ?, `quantita` = ? WHERE (`id` = ?);";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(alterStatement);
+			preparedStatement.setLong(1, product.getId());
+			preparedStatement.setString(2, product.getNome());
+			preparedStatement.setFloat(3, product.getPrezzo());
+			preparedStatement.setInt(4, product.getSaldo());
+			preparedStatement.setDate(5, Date.valueOf(product.getData_uscita()));
+			preparedStatement.setFloat(6, product.getVoto());
+			preparedStatement.setString(7, product.getDescrizione());
+			preparedStatement.setFloat(8, product.getPeso());
+			preparedStatement.setInt(9, product.getQuantità());
+			preparedStatement.setLong(10, id);
+			preparedStatement.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			
+				if (connection != null)
+					connection.close();
+			}
+			catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+	}
+
 }

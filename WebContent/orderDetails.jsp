@@ -4,7 +4,8 @@
 
 
 <%
-OrderBean order = (OrderBean) request.getAttribute("ordine");
+OrderBean order = (OrderBean) session.getAttribute("ordine");
+LinkedList<ContentBean> products = (LinkedList<ContentBean>) session.getAttribute("products");
 %>
 
 <!DOCTYPE html>
@@ -29,28 +30,63 @@ OrderBean order = (OrderBean) request.getAttribute("ordine");
 					<th>numero_ordine</th>
 					<th>costo_totale</th>
 					<th>indirizzo_spedizione</th>
-					<th>data_spedizione</th>
-					<th>username</th>
 					<th>data_ordine</th>
+					<th>data_spedizione</th>
+
 				</tr>
 			</thead>
 
 			<tbody class=details>
 				<tr>
 					<td><%=order.getNum_ordine()%></td>
-					<td><%=order.getCosto_totale()%> &euro; </td>
+					<td><%=order.getCosto_totale()%> &euro;</td>
 					<td><%=order.getIndirizzo_spedizione()%></td>
-					<td><%=order.getData_spedizione()%></td>
-					<td><%=order.getUsername()%></td>
 					<td><%=order.getData_ordine()%></td>
+					<td><%=order.getData_spedizione()%></td>
 				</tr>
 			</tbody>
 		</table>
 
 		<br>
 
-	
+
 	</div>
+	<table>
+		<thead class=details>
+			<tr>
+				<th>Nome</th>
+				<th>Prezzo</th>
+				<th>Quantita acquistata</th>
+				<th>Iva</th>
+			</tr>
+		</thead>
+		<tbody class=catalogo>
+			<%
+			if (products != null && products.size() != 0) {
+				for (ContentBean bean : products) {
+			%>
+			<tr>
+				<td><%=bean.getNome_art()%></td>
+				<td><%=bean.getPrezzo_acquisto()%> &euro;</td>
+				<td><%=bean.getNum_art_acq()%></td>
+				<td><%=bean.getIva()%>%</td>
+			</tr>
+
+			<%
+			}
+			} else {
+			%>
+			<tr>
+				<td colspan="6">Nessun prodotto registrato</td>
+			</tr>
+			<%
+			}
+			%>
+		</tbody>
+	</table>
+
+
+
 
 	<%
 	}

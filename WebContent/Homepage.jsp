@@ -25,8 +25,8 @@ if (products == null) {
 	<div class="container">
 		<a href="OrderHistory" id="orderhistory">Storico Ordini </a> <a
 			href="cart.jsp">Visualizza Carrello</a> <a href="loginPage.jsp"
-			id="loginPage">Login </a> <a href="Admin/Catalogo.jsp" id="Catalogo">Catalogo
-		</a>
+			id="loginPage">Login </a> <a href="Catalogo" id="Catalogo">Catalogo</a>
+		<a href="OrderArchive" id="orderhistory">Storico Ordini_admin </a>
 	</div>
 
 

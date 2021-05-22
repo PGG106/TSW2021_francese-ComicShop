@@ -1,12 +1,17 @@
 package it.unisa.control;
 
 import java.io.IOException;
+import java.util.LinkedList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import it.unisa.model.Cart;
+import it.unisa.model.ContentBean;
 import it.unisa.model.OrderDAO;
+import it.unisa.model.ProductBean;
+import it.unisa.model.ProductDAO;
 import it.unisa.model.UserBean;
 
 @WebServlet("/Ordine")
@@ -14,7 +19,7 @@ public class OrdineControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	static OrderDAO OrderDao = new OrderDAO();
-
+static ProductDAO productDAO= new ProductDAO();
 	public OrdineControl() {
 		super();
 	}
@@ -39,12 +44,17 @@ public class OrdineControl extends HttpServlet {
 
 			}
 
-			if (action.equalsIgnoreCase("mostradettagli")) {
+			else if (action.equalsIgnoreCase("mostradettagli")) {
+				HttpSession session = request.getSession(true);
 				String id = String.valueOf(request.getParameter("codice"));
-				request.removeAttribute("ordine");
-				request.setAttribute("ordine", order.getOrderById(id));
+				LinkedList<ContentBean> products=order.getContentByOrderId(id);
+				session.removeAttribute("ordine");
+				session.setAttribute("ordine", order.getOrderById(id));
+				session.setAttribute("products", products);
 				request.getRequestDispatcher("orderDetails.jsp").forward(request, response);
 			}
+			
+			
 
 		}
 	}
