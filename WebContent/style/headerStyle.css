@@ -28,7 +28,7 @@ body {
 }
 
 .nav-container {
-  max-width: 1000px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -73,6 +73,7 @@ nav ul li ul li a {
 
 nav form {
 	margin-top: 7px;
+	width: 400px;
 }
 
 nav input[type=search]:focus {

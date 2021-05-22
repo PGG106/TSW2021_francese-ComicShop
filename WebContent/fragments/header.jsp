@@ -28,6 +28,7 @@
           <a href="./OrderHistory.jsp">Storico ordini</a>
         </li>
         
+        
          <li>
           <a href="#!">Dropdown 1</a>
           <ul class="nav-dropdown">
@@ -44,19 +45,11 @@
         </li>
         
         <li>
-          <a href="#!">Dropdown 2</a>
-          <ul class="nav-dropdown">
-            <li>
-              <a href="#!">Link 1</a>
-            </li>
-            <li>
-              <a href="#!">Link 2</a>
-            </li>
-            <li>
-              <a href="#!">Link 3</a>
-            </li>
-          </ul>
+          <a href="./Admin/Ordini.jsp">Storico ordini_admin</a>
         </li>
+        
+        
+        
         <li>
           <a href="./cart.jsp">Carrello</a>
         </li>

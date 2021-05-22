@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ include file="./fragments/header.jsp" %>
 
 <%
 Collection<?> products = (Collection<?>) request.getAttribute("products");
@@ -13,21 +14,16 @@ if (products == null) {
 <html>
 <%@ page contentType="text/html; charset=UTF-8"
 	import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.Cart, it.unisa.model.ItemOrder"%>
+	
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="NewFile.css" rel="stylesheet" type="text/css">
+<link href="./style/style.css" rel="stylesheet" type="text/css">
 <title>Comicshop</title>
 
 </head>
 
 <body>
-	<div class="container">
-		<a href="OrderHistory" id="orderhistory">Storico Ordini </a> <a
-			href="cart.jsp">Visualizza Carrello</a> <a href="loginPage.jsp"
-			id="loginPage">Login </a> <a href="Catalogo" id="Catalogo">Catalogo</a>
-		<a href="OrderArchive" id="orderhistory">Storico Ordini_admin </a>
-	</div>
 
 
 	<h2>Prodotti</h2>
@@ -76,6 +72,7 @@ if (products == null) {
 
 
 
-
 </body>
+
+<%@ include file="./fragments/footer.html" %>
 </html>
