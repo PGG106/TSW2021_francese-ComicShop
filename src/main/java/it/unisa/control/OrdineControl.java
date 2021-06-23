@@ -10,7 +10,6 @@ import javax.servlet.http.*;
 import it.unisa.model.Cart;
 import it.unisa.model.ContentBean;
 import it.unisa.model.OrderDAO;
-import it.unisa.model.ProductBean;
 import it.unisa.model.ProductDAO;
 import it.unisa.model.UserBean;
 

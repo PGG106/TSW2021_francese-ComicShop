@@ -46,7 +46,7 @@ public class AdminFilter implements Filter {
 		{
 			response.sendRedirect(request.getContextPath()+"/AccessDenied.jsp?"); 
 		}
-		else if(!(user.getUsername().equals("SiteAdmin")))
+		else if(!(user.IsAdmin()))
 		{ 
 			response.sendRedirect(request.getContextPath()+"/AccessDenied.jsp?"); 
 		}

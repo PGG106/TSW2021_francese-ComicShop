@@ -61,6 +61,7 @@ public class UserDAO {
 				String num_tel= rs.getString("num_telefono");
 				String paese_residenza= rs.getString("paese_residenza");
 				LocalDate data_nascita=rs.getDate("data_nascita").toLocalDate();
+				Boolean admin= rs.getBoolean("admin");
 				System.out.println("Welcome " + firstName);
 				bean.setNome(firstName);
 				bean.setCognome(lastName);
@@ -69,6 +70,7 @@ public class UserDAO {
 				bean.setPaese_residenza(paese_residenza);
 				bean.setData_nascita(data_nascita);
 				bean.setValid(true);
+				bean.setAdmin(admin);
 			}
 
 		}

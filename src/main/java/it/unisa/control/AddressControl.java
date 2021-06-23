@@ -45,6 +45,7 @@ public class AddressControl extends HttpServlet {
 		address.setCittà(città);
 		address.setProvincia(provincia);
 		AddressDAO.doSave(user, address);
+	
 		
 		response.sendRedirect("CheckoutPage.jsp");
 		

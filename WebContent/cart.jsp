@@ -1,7 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.Cart,it.unisa.model.ItemOrder"
 	pageEncoding="UTF-8"%>
-<%@ include file="./fragments/header.jsp" %>
+<%
+if (session == null || session.getAttribute("currentSessionUser") == null) {
+%>
+<%@ include file="./fragments/header.jsp"%>
+
+<%
+} else {
+%>
+<%@ include file="./fragments/headerlogged.jsp"%>
+<%
+}
+%>
+
 
 
 <!DOCTYPE html>
@@ -84,7 +96,7 @@
 	<br>
 	
 	<div class=wrapper>
-	<form class=cart action="./CheckoutPage.jsp" method="get" id="checkout">
+	<form class=cart action="./CheckOut" method="get" id="checkout">
 	<button class=btn type="submit">Checkout</button>
 	</form>
 	</div>

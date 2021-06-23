@@ -1,9 +1,31 @@
+<%@page import="it.unisa.model.PhotoBean"%>
+<%@page import="it.unisa.model.PhotoDAO"%>
+<%@page import="java.io.*"%>
+<%@page import="java.awt.image.*"%>
+<%@page import="javax.imageio.ImageIO"%>
+<%@page import="javax.xml.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ include file="./fragments/header.jsp" %>
+
+<%
+if (session == null || session.getAttribute("currentSessionUser") == null) {
+%>
+<%@ include file="./fragments/header.jsp"%>
+
+<%
+} else {
+%>
+<%@ include file="./fragments/headerlogged.jsp"%>
+<%
+}
+%>
+
+
+
 
 <%
 Collection<?> products = (Collection<?>) request.getAttribute("products");
+PhotoDAO fotodao= new PhotoDAO();
 if (products == null) {
 	response.sendRedirect("./product");
 	return;
@@ -14,7 +36,7 @@ if (products == null) {
 <html>
 <%@ page contentType="text/html; charset=UTF-8"
 	import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.Cart, it.unisa.model.ItemOrder"%>
-	
+
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -31,7 +53,7 @@ if (products == null) {
 	<table>
 		<thead class=catalogo>
 			<tr>
-				<th><a href="product?sort=id">Id </a></th>
+				<th>Foto</th>
 				<th><a href="product?sort=nome">Nome</a></th>
 				<th><a href="product?sort=prezzo">Prezzo</a></th>
 				<th><a href="product?sort=voto">Voto</a></th>
@@ -45,9 +67,11 @@ if (products == null) {
 				Iterator<?> it = products.iterator();
 				while (it.hasNext()) {
 					ProductBean bean = (ProductBean) it.next();
+					LinkedList<PhotoBean> foto= (LinkedList<PhotoBean>) fotodao.getPhotos(bean);
+					 
 			%>
 			<tr>
-				<td><%=bean.getId()%></td>
+				<td><img src="data:image/jpg;base64,<%=foto.get(0).getBase64image() %> " width=200 height=200/></td>
 				<td><%=bean.getNome()%></td>
 				<td><%=bean.getPrezzo()%> &euro;</td>
 				<td><%=bean.getVoto()%></td>
@@ -74,5 +98,5 @@ if (products == null) {
 
 </body>
 
-<%@ include file="./fragments/footer.html" %>
+<%@ include file="./fragments/footer.html"%>
 </html>

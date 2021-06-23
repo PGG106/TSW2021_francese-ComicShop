@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 
 import it.unisa.model.OrderBean;
 import it.unisa.model.OrderDAO;
-import it.unisa.model.UserBean;
 
 /**
  * Servlet implementation class OrderArchiveServlet

@@ -2,13 +2,29 @@
 <%@page import="java.util.LinkedList"%>
 <%@page import="it.unisa.model.OrderBean"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1"%>
+<%
+if (session == null || session.getAttribute("currentSessionUser") == null) {
+%>
+<%@ include file="../fragments/header.jsp"%>
+
+<%
+} else {
+%>
+<%@ include file="../fragments/headerlogged.jsp"%>
+<%
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<style>
+
+
+</style>
+<link href="./style/style.css" rel="stylesheet" type="text/css">
+<title>Archivio ordini admin</title>
 </head>
 <body>
 	<%
@@ -34,7 +50,7 @@
 				</td>
 				<td><%=ordine.getData_ordine()%></td>
 				<td><%=ordine.getCosto_totale()%> &euro;</td>
-				<td><%=ordine.getUsername()%> &euro;</td>
+				<td><%=ordine.getUsername()%> </td>
 			</tr>
 			<%
 			}
@@ -48,15 +64,19 @@
 	<%
 	}
 	%>
+	<div class="date_input">
+	<form action=OrderArchive >
+		<INPUT type="date" name="startdate"> <INPUT type="date"
+			name="enddate"> <INPUT type="submit" value="cerca">
+	</form>
+</div>
+
+<div>
 	<form action=OrderArchive>
-		<INPUT type="date" name="startdate"> 
-		<INPUT type="date" name="enddate"> 
-		<INPUT type="submit" value="cerca">
+		<INPUT type="text" name="username"> <INPUT type="submit"
+			value="cerca">
 	</form>
 	
-	<form action=OrderArchive>
-		<INPUT type="text" name="username"> 
-		<INPUT type="submit" value="cerca">
-	</form>
+	</div>
 </body>
 </html>

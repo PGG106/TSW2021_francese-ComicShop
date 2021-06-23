@@ -2,7 +2,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="it.unisa.model.*"%>
-<%@ include file="./fragments/header.jsp" %>
+<%
+if (session == null || session.getAttribute("currentSessionUser") == null) {
+%>
+<%@ include file="./fragments/header.jsp"%>
+
+<%
+} else {
+%>
+<%@ include file="./fragments/headerlogged.jsp"%>
+<%
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>

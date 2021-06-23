@@ -1,3 +1,4 @@
+<%@page import="it.unisa.model.UserBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -27,14 +28,27 @@
 						</form>
 					</li>
 
-					<li><a href="#!">Ciao,Accedi</a>
+					<li><a href="#!">Ciao, <%=((UserBean) session.getAttribute("currentSessionUser")).getNome()%>
+					</a>
 						<ul class="nav-dropdown">
-							<li><a href="./loginPage.jsp">Accedi</a></li>
 							<li><a href="#!">Il mio account</a></li>
-							<li><a href="./OrderHistory">I miei ordini</a></li>
+							<li><a href="#!">I miei ordini</a></li>
+							<li><a href="./Logout">Esci</a></li>
 						</ul></li>
 					<li><a href="./OrderHistory">Storico ordini</a></li>
 					<li><a href="./cart.jsp">Carrello</a></li>
+
+					<%
+					if (((UserBean) session.getAttribute("currentSessionUser")).IsAdmin()) {
+					%>
+					<li><a href="./OrderArchive">Storico ordini admin</a></li>
+					<li><a href="./Admin/Catalogo.jsp">Catalogo</a></li>
+					<%
+					}
+					%>
+
+
+
 				</ul>
 			</nav>
 		</div>

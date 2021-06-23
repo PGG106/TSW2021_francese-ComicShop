@@ -63,7 +63,7 @@ public class AddressDAO {
 		}
 
 		catch (Exception ex) {
-			System.out.println("Inserimento ordine fallito " + ex);
+			System.out.println( ex);
 		}
 
 		return addresses;
