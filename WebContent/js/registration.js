@@ -156,7 +156,7 @@ function data_validation(data) {
 	if (date < today) {
 		return true
 	}
-	
+
 	$('#errorspan').text("la data di nascita non può essere successiva ad oggi \n");
 	$(".alert").css({ "display": "block" });
 	valid = false;
@@ -169,7 +169,7 @@ $(document).ready(function(event) {
 	console.log("ready!");
 
 	$("#myform").submit(function(event) {
-	$('#errorspan').text("");
+		$('#errorspan').text("");
 
 		$(":input").removeAttr("style");
 
@@ -182,15 +182,38 @@ $(document).ready(function(event) {
 			console.log("iscrizione non valida");
 			event.preventDefault;
 			event.stopPropagation();
-			valid=true;
+			valid = true;
 			return false;
 		}
 	})
+
+	$("#myform input[name=usr]").keyup(function(event) {
+		$.post("./validation", { "username": $("#myform input[name=usr]").val() }, function(data) {
+			console.log(data);
+			if (data===true) {
+				$("#myform input[name=usr]").css({
+					"border-color": "red",
+					"border-width": "thick"
+				});
+				console.log("username già esistente");
+
+			}
+			else {
+				$("#myform input[name=usr]").css({
+					"border-color": "green",
+					"border-width": "thick"
+				});
+				console.log("username nuovo");
+			}
+		}, 'JSON');
+	});
+
+
 	$(":input").click(function() {
 		this.focus();
 
 	})
-	
+
 
 }
 )
