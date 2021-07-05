@@ -84,7 +84,7 @@ public class validation extends HttpServlet {
 			connection.close();
 			preparedStatement.close();
 			rs.close();
-
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
