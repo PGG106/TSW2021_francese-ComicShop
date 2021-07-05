@@ -30,7 +30,7 @@
 					<li><a href="#!">Ciao,Accedi</a>
 						<ul class="nav-dropdown">
 							<li><a href="./loginPage.jsp">Accedi</a></li>
-							<li><a href="#!">Il mio account</a></li>
+							<li><a href="./UserPage">Il mio account</a></li>
 							<li><a href="./OrderHistory">I miei ordini</a></li>
 						</ul></li>
 					<li><a href="./OrderHistory">Storico ordini</a></li>

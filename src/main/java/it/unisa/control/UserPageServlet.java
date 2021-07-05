@@ -13,19 +13,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import it.unisa.model.*;
+import it.unisa.model.AddressBean;
+import it.unisa.model.AddressDAO;
+import it.unisa.model.PaymentMethodBean;
+import it.unisa.model.PaymentMethodDAO;
+import it.unisa.model.UserBean;
 
 /**
- * Servlet implementation class CheckOutServlet
+ * Servlet implementation class UserPageServlet
  */
-@WebServlet("/CheckOut")
-public class CheckOutServlet extends HttpServlet {
+@WebServlet("/UserPage")
+public class UserPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CheckOutServlet() {
+    public UserPageServlet() {
         super();
         
     }
@@ -34,7 +38,7 @@ public class CheckOutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 		UserBean user = (UserBean) session.getAttribute("currentSessionUser");
 		AddressDAO addressDAO = new AddressDAO();
 		PaymentMethodDAO paymentMethodDAO = new PaymentMethodDAO();
@@ -63,17 +67,16 @@ public class CheckOutServlet extends HttpServlet {
 		}
 		session.setAttribute("indirizzi", indirizzi);
 		session.setAttribute("metodi", metodiPagamento);
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/CheckoutPage.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/UserPage.jsp");
 		dispatcher.include(request, response);
 
-		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

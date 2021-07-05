@@ -4,6 +4,16 @@
   font-family: Open Sans;
 }
 
+div.register{
+		width: 400px;
+  	border: 1px solid black;
+  	padding: 12px 20px 12px;
+ 	margin-left: auto;
+	margin-right: auto;
+	background-color:#f0f0f5;
+}
+
+
 table {
 	margin-left: auto;
 	margin-right: auto;
@@ -17,6 +27,8 @@ table {
 	border-radius: 6px;
 	
 }
+
+img { display:block; }
 
 tbody td{
 	border-spacing:5px;
@@ -183,7 +195,7 @@ tbody.paymentMethod tr:hover {background-color: #a992d3 ;}
 	background-color: #a992d3;
 }
 
-div.login, div.catalogo, div.register, div.address, div.paymentMethod {
+div.login, div.catalogo,  div.address, div.paymentMethod {
 	width: 300px;
   	border: 1px solid black;
   	padding: 12px 20px 12px;
@@ -275,3 +287,10 @@ div.container {
     top: 50%;
     left: 45%;
 }
+
+.date_input
+{  position:relative;
+	margin-left:7em;
+	margin-top:1000px;
+}
+

@@ -60,7 +60,7 @@ public class Cart {
 		try {
 			newOrder = new ItemOrder(model.doRetrieveByKey(Id));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return;
 		}

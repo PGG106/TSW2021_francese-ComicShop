@@ -205,7 +205,7 @@ public class ProductDAO implements ProductModel {
 			preparedStatement.executeUpdate();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -218,7 +218,6 @@ public class ProductDAO implements ProductModel {
 					connection.close();
 			}
 			catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	}

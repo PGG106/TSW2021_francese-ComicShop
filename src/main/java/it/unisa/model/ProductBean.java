@@ -51,7 +51,8 @@ public class ProductBean implements Serializable {
 
 
 		public float getPrezzo() {
-			return prezzo;
+			
+			return (float) (Math.round((prezzo )* 100.0) / 100.0);
 		}
 
 

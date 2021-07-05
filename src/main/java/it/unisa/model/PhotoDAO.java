@@ -37,7 +37,6 @@ public class PhotoDAO {
 		String SearchQuery = "Select foto.* FROM foto Join articolo ON " + "foto.articolo=articolo.id "
 				+ " WHERE articolo.id = " + product.getId();
 
-		System.out.print(SearchQuery);
 		Connection connection = null;
 		try {
 			connection = ds.getConnection();
@@ -68,7 +67,8 @@ public class PhotoDAO {
 				photos.add(bean);
 
 			}
-
+connection.close();
+rs.close();
 		}
 
 		catch (Exception ex) {

@@ -19,8 +19,13 @@ public class PaymentMethodBean {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getTipo() {
+	
+	public int getRawTipo() {
 		return tipo;
+	}
+	
+	public String getTipo() {
+		return (tipo == 0)? "carta di credito":"conto bancario" ;
 	}
 	public void setTipo(int tipo) {
 		this.tipo = tipo;

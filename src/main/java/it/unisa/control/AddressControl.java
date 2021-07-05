@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import it.unisa.model.*;
 
 /**
@@ -18,19 +17,20 @@ import it.unisa.model.*;
 public class AddressControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static AddressDAO AddressDAO = new AddressDAO();
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddressControl() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	public AddressControl() {
+		super();
+
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String via = request.getParameter("via");
 		int numero_civico = Integer.parseInt(request.getParameter("numero_civico"));
@@ -45,17 +45,17 @@ public class AddressControl extends HttpServlet {
 		address.setCittà(città);
 		address.setProvincia(provincia);
 		AddressDAO.doSave(user, address);
-	
-		
 		response.sendRedirect("CheckoutPage.jsp");
-		
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		doGet(request, response);
 	}
 

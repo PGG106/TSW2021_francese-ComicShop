@@ -31,8 +31,8 @@
 					<li><a href="#!">Ciao, <%=((UserBean) session.getAttribute("currentSessionUser")).getNome()%>
 					</a>
 						<ul class="nav-dropdown">
-							<li><a href="#!">Il mio account</a></li>
-							<li><a href="#!">I miei ordini</a></li>
+							<li><a href="./UserPage">Il mio account</a></li>
+							<li><a href="./OrderHistory">I miei ordini</a></li>
 							<li><a href="./Logout">Esci</a></li>
 						</ul></li>
 					<li><a href="./OrderHistory">Storico ordini</a></li>

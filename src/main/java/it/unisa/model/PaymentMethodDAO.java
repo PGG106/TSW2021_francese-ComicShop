@@ -62,7 +62,7 @@ public class PaymentMethodDAO {
 		}
 
 		catch (Exception ex) {
-			//TODO
+			
 		}
 
 		return Methods;
@@ -79,7 +79,7 @@ public class PaymentMethodDAO {
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setInt(1, PaymentMethod.getTipo());
+			preparedStatement.setInt(1, PaymentMethod.getRawTipo());
 			preparedStatement.setString(2, PaymentMethod.getTitolare());
 			preparedStatement.setDate(3, Date.valueOf(PaymentMethod.getScadenza()));
 			preparedStatement.setBoolean(4, PaymentMethod.isPredefinito());

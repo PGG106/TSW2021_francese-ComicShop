@@ -19,11 +19,7 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-
-
-</style>
-<link href="./style/style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet"  href="../style/style.css" >
 <title>Archivio ordini admin</title>
 </head>
 <body>
@@ -65,7 +61,7 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 	}
 	%>
 	<div class="date_input">
-	<form action=OrderArchive >
+	<form id= selector action=OrderArchive  >
 		<INPUT type="date" name="startdate"> <INPUT type="date"
 			name="enddate"> <INPUT type="submit" value="cerca">
 	</form>
