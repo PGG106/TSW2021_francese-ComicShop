@@ -46,7 +46,7 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 					href="Ordine?action=mostradettagli&codice=<%=ordine.getId()%>"><%=ordine.getId()%></a>
 				</td>
 				<td><%=ordine.getData_ordine()%></td>
-				<td><%=ordine.getCosto_totale()%> &euro;</td>
+				<td><%=String.format("%.2f", ordine.getCosto_totale())%>&euro;</td>
 			</tr>
 			<%
 			}
@@ -54,13 +54,12 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 		</tbody>
 	</table>
 	<%
-	}
-	else {
+	} else {
 	%>
 	<h2>Nessun ordine registrato</h2>
 	<%
 	}
 	%>
 </body>
-<%@ include file="./fragments/footer.html" %>
+<%@ include file="./fragments/footer.html"%>
 </html>

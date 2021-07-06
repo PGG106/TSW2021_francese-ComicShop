@@ -51,7 +51,8 @@ LinkedList<ContentBean> products = (LinkedList<ContentBean>) session.getAttribut
 			<tbody class=details>
 				<tr>
 					<td><%=order.getNum_ordine()%></td>
-					<td><%=order.getCosto_totale()%> &euro;</td>
+					<td><%=String.format("%.2f", order.getCosto_totale())%>
+						&euro;</td>
 					<td><%=order.getIndirizzo_spedizione()%></td>
 					<td><%=order.getData_ordine()%></td>
 					<td><%=order.getData_spedizione()%></td>
@@ -79,7 +80,8 @@ LinkedList<ContentBean> products = (LinkedList<ContentBean>) session.getAttribut
 			%>
 			<tr>
 				<td><%=bean.getNome_art()%></td>
-				<td><%=bean.getPrezzo_acquisto()%> &euro;</td>
+				<td><%=String.format("%.2f", bean.getPrezzo_acquisto())%>
+					&euro;</td>
 				<td><%=bean.getNum_art_acq()%></td>
 				<td><%=bean.getIva()%>%</td>
 			</tr>
@@ -105,5 +107,5 @@ LinkedList<ContentBean> products = (LinkedList<ContentBean>) session.getAttribut
 	%>
 
 </body>
-<%@ include file="./fragments/footer.html" %>
+<%@ include file="./fragments/footer.html"%>
 </html>

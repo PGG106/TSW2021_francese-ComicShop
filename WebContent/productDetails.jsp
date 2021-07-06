@@ -52,7 +52,7 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 		<tbody class=details>
 		<tr>
 			<td><%=product.getNome()%></td>
-			<td><%=product.getPrezzo()%> &euro;</td>
+			<td><%=String.format("%.2f", product.getPrezzo())   %> &euro;</td>
 			<td><%=product.getSaldo()%></td>
 			<td><%=product.getData_uscita()%></td>
 			<td><%=product.getVoto()%></td>
