@@ -21,10 +21,16 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 <head>
 <meta charset="UTF-8">
 <link href="./style/style.css" rel="stylesheet" type="text/css">
+<link href="./style/error.css" rel="stylesheet" type="text/css">
+<script src="./js/checkout.js"></script>
 <title>Checkout</title>
 </head>
 <body>
-
+<div class="alert">
+			<span class="closebtn" 
+				onclick="this.parentElement.style.display='none';">&times;</span>
+				<span id="errorspan"></span>
+		</div>
 	<%
 	Cart cart = (Cart) session.getAttribute("cart");
 	String itemID = request.getParameter("itemID");
@@ -68,7 +74,7 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 
 		<select id="indirizzo" name="indirizzo" class=select-large>
 			<%
-			if (indirizzi != null) {
+			if (!indirizzi.isEmpty() ) {
 				for (String indirizzo : indirizzi) {
 			%>
 			<option value="<%=indirizzo%>">
@@ -78,7 +84,7 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 			}
 			} else {
 			%>
-			<option> nessun indirizzo in archivio</option>
+			<option selected value="nessun indirizzo in archivio" disabled>nessun indirizzo in archivio</option>
 			<%
 			}
 			%>
@@ -90,7 +96,7 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 
 		<select id="metodoPagamento" name="pagamento" class=select-large>
 			<%
-			if (metodiPagamento != null) {
+			if (!metodiPagamento.isEmpty() ) {
 				for (String metodoPagamento : metodiPagamento) {
 			%>
 			<option value="<%=metodoPagamento%>"><%=metodoPagamento%>
@@ -98,8 +104,13 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 
 			<%
 			}
+			} else {
+			%>
+			<option selected value="nessun metodo di pagamento in archivio" disabled>nessun metodo di pagamento in archivio</option>
+			<%
 			}
 			%>
+
 		</select> <a href=PaymentMethodRegistration.jsp>Inserisci un metodo di
 			pagamento</a><br>
 
@@ -125,7 +136,8 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 					<tr>
 						<td><%=beancart.getNome()%></td>
 						<td><%=beancart.getNumItems()%></td>
-						<td><%=String.format("%.2f", beancart.getTotalCost()) %> &euro;</td>
+						<td><%=String.format("%.2f", beancart.getTotalCost())%>
+							&euro;</td>
 						<td><a href="product?action=deleteC&id=<%=beancart.getId()%>">Elimina
 								dal carrello</a></td>
 					</tr>
@@ -142,7 +154,7 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 
 					<tr>
 						<th colspan=3>Totale:</th>
-						<td><%=prezzo_finale%> &euro;</td>
+						<td><%=String.format("%.2f", prezzo_finale)%> &euro;</td>
 					</tr>
 				</tfoot>
 			</table>

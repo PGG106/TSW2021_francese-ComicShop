@@ -174,7 +174,7 @@ $(document).ready(function(event) {
 		$(":input").removeAttr("style");
 
 		if (validateform()) {
-
+			
 			console.log("iscrizione valida");
 		}
 		else {

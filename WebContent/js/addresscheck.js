@@ -102,7 +102,7 @@ $(document).ready(function(event) {
 			console.log("indirizzo valido");
 		}
 		else {
-
+			valid=true;
 			console.log("indirizzo non valido");
 			event.preventDefault;
 			event.stopPropagation();
