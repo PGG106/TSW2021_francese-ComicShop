@@ -38,7 +38,7 @@ public class ProductDAO implements ProductModel {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + ProductDAO.TABLE_NAME
-				+ " (id,nome,prezzo, saldo, data_di_uscita,voto,descrizione,peso,quantita ) VALUES (?, ?, ?, ?,?,?,?,?,?)";
+				+ " (id,nome,prezzo, saldo, data_di_uscita,voto,descrizione,peso,quantita,mostra ) VALUES (?, ?, ?, ?,?,?,?,?,?,?)";
 
 		try {
 			connection = ds.getConnection();
@@ -52,7 +52,7 @@ public class ProductDAO implements ProductModel {
 			preparedStatement.setString(7, product.getDescrizione());
 			preparedStatement.setFloat(8, product.getPeso());
 			preparedStatement.setInt(9, product.getQuantità());
-
+			preparedStatement.setBoolean(10, product.isVisible());
 			preparedStatement.executeUpdate();
 
 			connection.commit();
@@ -93,6 +93,7 @@ public class ProductDAO implements ProductModel {
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setPeso(rs.getFloat("peso"));
 				bean.setQuantità(rs.getInt("quantita"));
+				bean.setVisible(rs.getBoolean("mostra"));
 
 			}
 
@@ -167,6 +168,7 @@ public class ProductDAO implements ProductModel {
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setPeso(rs.getFloat("peso"));
 				bean.setQuantità(rs.getInt("quantita"));
+				bean.setVisible(rs.getBoolean("mostra"));
 				products.add(bean);
 			}
 
@@ -187,7 +189,8 @@ public class ProductDAO implements ProductModel {
 		PreparedStatement preparedStatement = null;
 		String alterStatement = "UPDATE `comicshop`.`articolo` SET `id` = ?, `nome` = ?, "
 				+ "`prezzo` = ?, `saldo` = ?, `data_di_uscita` = ?, "
-				+ "`voto` = ?, `descrizione` = ?, `peso` = ?, `quantita` = ? WHERE (`id` = ?);";
+				+ "`voto` = ?, `descrizione` = ?, `peso` = ?, `quantita` = ? `mostra`=?"
+				+ " WHERE (`id` = ?);";
 
 		try {
 			connection = ds.getConnection();
@@ -201,7 +204,8 @@ public class ProductDAO implements ProductModel {
 			preparedStatement.setString(7, product.getDescrizione());
 			preparedStatement.setFloat(8, product.getPeso());
 			preparedStatement.setInt(9, product.getQuantità());
-			preparedStatement.setLong(10, id);
+			preparedStatement.setBoolean(10, product.isVisible());
+			preparedStatement.setLong(11, id);
 			preparedStatement.executeUpdate();
 			
 		} catch (SQLException e) {

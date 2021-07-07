@@ -25,7 +25,7 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 
 <%
 Collection<?> products = (Collection<?>) request.getAttribute("products");
-PhotoDAO fotodao= new PhotoDAO();
+PhotoDAO fotodao = new PhotoDAO();
 if (products == null) {
 	response.sendRedirect("./product");
 	return;
@@ -67,11 +67,13 @@ if (products == null) {
 				Iterator<?> it = products.iterator();
 				while (it.hasNext()) {
 					ProductBean bean = (ProductBean) it.next();
-					LinkedList<PhotoBean> foto= (LinkedList<PhotoBean>) fotodao.getPhotos(bean);
-					 
+					LinkedList<PhotoBean> foto = (LinkedList<PhotoBean>) fotodao.getPhotos(bean);
+					if (bean.isVisible()) {
 			%>
 			<tr>
-				<td><img src="data:image/jpg;base64,<%=foto.get(0).getBase64image() %> " width=200 height=200/></td>
+				<td><img
+					src="data:image/jpg;base64,<%=foto.get(0).getBase64image()%> "
+					width=200 height=200 /></td>
 				<td><%=bean.getNome()%></td>
 				<td><%=String.format("%.2f", bean.getPrezzo())%> &euro;</td>
 				<td><%=bean.getVoto()%></td>
@@ -82,6 +84,9 @@ if (products == null) {
 			</tr>
 
 			<%
+			} else {
+			continue;
+			}
 			}
 			} else {
 			%>
