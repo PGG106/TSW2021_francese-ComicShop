@@ -13,7 +13,9 @@
 	text-align: left;
 	font: bold 16px sans-serif;
 	position: absolute;
-	bottom: 0;
+	margin: 100% 0px 0px 0px;
+	display: flex;
+    justify-content: space-around;
 }
 
 .footer-container .footer-left, .footer-container .footer-center,
@@ -23,15 +25,17 @@
 }
 
 /* Footer left */
+
 h3 {
 	text-align: left;
 }
 
 .footer-container .footer-left {
-	width: 40%;
+	width: 33%;
 }
 
 /* The company logo */
+
 .footer-container h3 {
 	color: #ffffff;
 	font: normal 36px 'Open Sans', cursive;
@@ -43,6 +47,7 @@ h3 {
 }
 
 /* Footer links */
+
 .footer-container .footer-links {
 	color: #ffffff;
 	margin: 20px 0 12px;
@@ -65,6 +70,7 @@ h3 {
 }
 
 /* Footer Center */
+
 .footer-container .footer-center {
 	width: 35%;
 }
@@ -122,6 +128,7 @@ h3 {
 }
 
 /* Footer Right */
+
 .footer-container .footer-right {
 	width: 20%;
 }
@@ -131,7 +138,7 @@ h3 {
 	color: #92999f;
 	font-size: 13px;
 	font-weight: normal;
-	margin: 0;
+	margin-top: 10px;
 }
 
 .footer-container .footer-company-about span {

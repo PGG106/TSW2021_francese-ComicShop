@@ -37,7 +37,7 @@ if (products == null) {
 <%@ page contentType="text/html; charset=UTF-8"
 	import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.Cart, it.unisa.model.ItemOrder"%>
 
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./style/style.css" rel="stylesheet" type="text/css">

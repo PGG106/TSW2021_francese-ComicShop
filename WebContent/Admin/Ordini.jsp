@@ -19,19 +19,25 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet"  href="../style/style.css" >
+<link href="./style/style.css" rel="stylesheet" type="text/css">
 <title>Archivio ordini admin</title>
 </head>
 <body>
+		
+			<h2>Ordini effettuati</h2>
+				
 	<%
 	List<OrderBean> ordini = new LinkedList<OrderBean>();
 	ordini = (LinkedList<OrderBean>) session.getAttribute("ordini");
+	/*
 	if (ordini != null) {
-		for (OrderBean ordine : ordini) {
+		for (OrderBean ordine : ordini) {	
+		}
+		*/
 	%>
-
+<div class="details">
 	<table>
-		<thead>
+		<thead class="details">
 			<tr>
 				<th>Codice ordine:</th>
 				<th>Data:</th>
@@ -39,7 +45,11 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 				<th>Identificativo:</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody class="details">
+			 <%
+			if (ordini != null) {
+				for (OrderBean ordine : ordini) {
+			%>
 			<tr>
 				<td><a
 					href="Ordine?action=mostradettagli&codice=<%=ordine.getId()%>"><%=ordine.getId()%></a>
@@ -53,6 +63,7 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 			%>
 		</tbody>
 	</table>
+	</div>
 	<%
 	} else {
 	%>

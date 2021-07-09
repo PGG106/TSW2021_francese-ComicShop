@@ -32,6 +32,7 @@ body {
   margin: 0 auto;
 }
 
+
 nav {
   float: right;
 }
@@ -72,9 +73,10 @@ nav ul li ul li a {
 }
 
 nav form {
-	margin-top: 7px;
+	margin-top: 6px;
 	width: 400px;
 }
+
 
 nav input[type=search]:focus {
     outline: none;

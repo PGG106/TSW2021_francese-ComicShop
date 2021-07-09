@@ -22,29 +22,31 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 <title>Storico Ordini</title>
 </head>
 <body>
+
+		<h2>I tuoi ordini</h2>
 	<%
 	List<OrderBean> ordini = new LinkedList<OrderBean>();
-	ordini = (LinkedList<OrderBean>) session.getAttribute("ordini");
-	if (ordini != null) {
-		for (OrderBean ordine : ordini) {
+	ordini = (List<OrderBean>) session.getAttribute("ordini");
 	%>
 
+	<div class="details">
 	<table>
-		<thead>
+		<thead class=details>
 			<tr>
 				<th>Codice ordine:</th>
 				<th>Data:</th>
 				<th>Importo totale:</th>
 			</tr>
 		</thead>
-		<tbody>
-
-
-
+		<tbody class=details>
+			
+			<%
+			if (ordini != null) {
+				for (OrderBean ordine : ordini) {
+			%>
+		
 			<tr>
-				<td><a
-					href="Ordine?action=mostradettagli&codice=<%=ordine.getId()%>"><%=ordine.getId()%></a>
-				</td>
+				<td><a href="Ordine?action=mostradettagli&codice=<%=ordine.getId()%>"><%=ordine.getId()%></a></td>
 				<td><%=ordine.getData_ordine()%></td>
 				<td><%=String.format("%.2f", ordine.getCosto_totale())%>&euro;</td>
 			</tr>
@@ -53,13 +55,17 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 			%>
 		</tbody>
 	</table>
+	</div>
 	<%
 	} else {
 	%>
 	<h2>Nessun ordine registrato</h2>
+	
+	
 	<%
 	}
 	%>
+	
 </body>
 <%@ include file="./fragments/footer.html"%>
 </html>
