@@ -5,7 +5,7 @@
 }
 
 div.register{
-		width: 400px;
+	width: 400px;
   	border: 1px solid black;
   	padding: 12px 20px 12px;
  	margin-left: auto;
@@ -52,20 +52,134 @@ tbody.catalogo tr {
 tbody.catalogo tr:hover {background-color: #a992d3 ;}
 
 
-
-thead.cart tr{
-	height: 50px;
-	background: #FFED86;
-	font-size: 16px;
-	border:1px solid black
+.user ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 200px;
+	background-color: #f1f1f1;
+	border: 1px solid #555;
+	display: contents;
+	list-style-type: none;
 }
+
+.user-container ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	border: groove;
+	border-radius: inherit;
+}
+
+
+.user li {
+	text-align: center;
+	border-bottom: 1px solid #555;
+}
+
+.user li:last-child {
+	border-bottom: none;
+}
+
+div.user-container {
+	margin-left: auto;
+	margin-right: auto;
+	
+	border-collapse: collapse;
+	overflow: hidden;
+	max-width: 800px;
+	width: 100%;
+	margin: 0 auto;
+	border-radius: 6px;
+}
+
+div.user {
+	margin-left: auto;
+	margin-right: auto;
+	
+	border-collapse: collapse;
+	overflow: hidden;
+	max-width: 800px;
+	width: 100%;
+	margin: 0 auto;
+	border-radius: 6px;
+}
+
+div.user-label {
+	padding: 10px 0px 0px 20px;
+}
+
+
+
+input.user[type=text], input.user[type=email],
+input.user[type=date],
+select {
+  	width: 50%;
+  	padding: 0px 10px 20px 20px;
+  	border: 1px;
+  	outline: none;
+}
+
+input.user[type=date], select {
+	width: 30%;
+}
+
+#metodoPagamento, #indirizzo{
+	width:95%;
+}
+
+div.user-link{
+	text-align:center
+}
+
+.details  input[type=number], input[type=checkbox],
+select {
+	width: 90px;
+  	padding: 12px 20px;
+  	margin: 8px;
+  	display: inline-block;
+  	border: 1px solid #ccc;
+  	border-radius: 4px;
+  	box-sizing: border-box;
+}
+
+.details  input[type=date], input[type=text],
+select {
+	width: 200px;
+  	padding: 12px 20px;
+  	margin: 8px;
+  	display: inline-block;
+  	border: 1px solid #ccc;
+  	border-radius: 4px;
+  	box-sizing: border-box;
+}
+
+
+.details input[type=submit], input[type=reset],
+select {
+	width: 90px;
+  	padding: 12px 20px;
+  	margin: 8px;
+  	display: inline-block;
+  	border: 1px solid #ccc;
+  	border-radius: 4px;
+  	box-sizing: border-box;
+}
+
+.btn-det:hover {
+	background-color: #FFED86;
+}
+
+
 
 tbody.cart tr{
 	background-color:#f0f0f5;
 	border: 1px solid black;
 	border-spacing:5px;
 	text-align:center;
-	height: 50px; 
+	height: 50px;
+	background: #FFED86;
+	font-size: 16px; 
 }
 
 tfoot.cart th{
@@ -73,7 +187,6 @@ tfoot.cart th{
 }
 
 tbody.cart tr:hover {background-color: #a992d3 ;}
-
 
 
 thead.details tr{
@@ -138,12 +251,6 @@ tfoot.paymentMethod td{
 	text-align: center;
 }
 
-thead.paymentMethod tr{
-	height: 50px;
-	background: #FFED86;
-	font-size: 16px;
-	border:1px solid black
-}
 
 tbody.paymentMethod tr {
 	background-color:#f0f0f5;
@@ -246,6 +353,7 @@ h1, h2, h3, h4 {
 	clear: both;
 }
 
+
 div.container {
 	display: flex;
 	justify-content: space-between;
@@ -293,4 +401,4 @@ div.container {
 	margin-left:7em;
 	margin-top:1000px;
 }
-
+ 
