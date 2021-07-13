@@ -458,9 +458,6 @@ div.container {
     height: 30px;
 }
 
-.grid-item img:hover {
-	transform: scale(1.25);
-}
 
 @media screen and (max-width: 1140px) {
 	.grid-container {

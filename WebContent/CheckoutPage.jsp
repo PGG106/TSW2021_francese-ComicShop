@@ -190,7 +190,9 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 				</tfoot>
 			</table>
 		</div>
-		<br> <input type=hidden name=action value=CompletaOrdine>
+		<br>
+		<form>
+		 <input type=hidden name=action value=CompletaOrdine>
 
 		<div class=wrapper>
 

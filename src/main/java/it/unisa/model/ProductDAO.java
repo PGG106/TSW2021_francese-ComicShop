@@ -189,7 +189,7 @@ public class ProductDAO implements ProductModel {
 		PreparedStatement preparedStatement = null;
 		String alterStatement = "UPDATE `comicshop`.`articolo` SET `id` = ?, `nome` = ?, "
 				+ "`prezzo` = ?, `saldo` = ?, `data_di_uscita` = ?, "
-				+ "`voto` = ?, `descrizione` = ?, `peso` = ?, `quantita` = ? `mostra`=?"
+				+ "`voto` = ?, `descrizione` = ?, `peso` = ?, `quantita` = ?  "
 				+ " WHERE (`id` = ?);";
 
 		try {
@@ -204,8 +204,7 @@ public class ProductDAO implements ProductModel {
 			preparedStatement.setString(7, product.getDescrizione());
 			preparedStatement.setFloat(8, product.getPeso());
 			preparedStatement.setInt(9, product.getQuantità());
-			preparedStatement.setBoolean(10, product.isVisible());
-			preparedStatement.setLong(11, id);
+			preparedStatement.setLong(10, id);
 			preparedStatement.executeUpdate();
 			
 		} catch (SQLException e) {

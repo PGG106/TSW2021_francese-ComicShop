@@ -35,7 +35,7 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 
 	<h2 style="text-align: center;">Inserisci nuovo articolo</h2>
 <div class=details>
-	<form method="post" id="a_form" action="product"></form>
+	<form method="post" id="a_form" action="product">
 	<table>
 	
 		<thead class=details>
@@ -44,7 +44,7 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 			<th>Nome</th>
 			<th>Prezzo</th>
 			<th>Voto</th>
-			<th>Quantità</th>
+			<th>Quantit&agrave;</th>
 			<th>Saldo</th>
 			<th>Data di uscita</th>
 			<th>Descrizione</th>
@@ -87,7 +87,7 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
         		</td>
         		<td>
             		<input type="hidden" name="action" value="insert">
-            		<input class=details name="descrizione" type="text" maxlength="100" rows="3" 
+            		<input class=details name="descrizione" type="text" maxlength="100"  
             		required placeholder="Inserisci descrizione">
         		</td>
         		<td>
@@ -102,6 +102,7 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 				</td>
         </tbody>	
     </table>
+    </form>
 </div>	
 		
 
@@ -110,7 +111,7 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 	 
 <div class=details>
 	
-	<form method="GET" id="my_form" action="product"></form>
+
 	<table>
 	
 		<thead class=details>
@@ -119,7 +120,7 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 			<th><a href="product?sort=nome">Nome</a></th>
 			<th><a href="product?sort=prezzo">Prezzo</a></th>
 			<th><a href="product?sort=voto">Voto</a></th>
-			<th><a href="product?sort=quantita">Quantità</a></th>
+			<th><a href="product?sort=quantita">Quantit&agrave;</a></th>
 			<th>Saldo</th>
 			<th>Data di uscita</th>
 			<th>Descrizione</th>
@@ -138,75 +139,50 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
         <tbody  class=details>
         	<tr>
         		<td>
-            		<INPUT class="catalogo-admin" type="hidden" name=itemID value=<%=bean.getId()%>>
-					<INPUT class="catalogo-admin" type="hidden" name="action" value="update"> 
-					<INPUT class="catalogo-admin" TYPE=number name="NewID" VALUE=<%=bean.getId()%>> 
-					<%-- <INPUT TYPE=SUBMIT VALUE=Update>--%>
+        		<INPUT class="catalogo-admin old" TYPE=hidden  name="OldID" VALUE=<%=bean.getId()%>> 
+					<INPUT class="catalogo-admin new" TYPE=number  name="NewID" VALUE=<%=bean.getId()%>> 
         		</td>
         		
         		<td>
-					<INPUT type="hidden" name=itemID value=<%=bean.getId()%>>
-					<INPUT type="hidden" name="action" value="update">
-					<INPUT TYPE=TEXT NAME=nome VALUE=<%=bean.getNome()%>>
-					<%-- <INPUT TYPE=SUBMIT VALUE=Update>--%>
+					<INPUT TYPE=TEXT class="nome" NAME=nome VALUE=<%=bean.getNome()%>>
 				</td>
 				<td>
-					<INPUT type="hidden" name=itemID value=<%=bean.getId()%>>
-					<INPUT type="hidden" name="action" value="update">
-					<INPUT id=prezzo_cat TYPE=text step="any" NAME=prezzo VALUE=<%=String.format("%.2f", bean.getPrezzo())%>>
-					<%-- <INPUT TYPE=SUBMIT VALUE=Update>--%>
+					<INPUT TYPE=text step="any" class="prezzo" NAME=prezzo VALUE=<%=String.format("%.2f", bean.getPrezzo())%>>
 				</td>
 				<td>
-					<INPUT type="hidden" name=itemID value=<%=bean.getId()%>>
-					<INPUT type="hidden" name="action" value="update">
-					<INPUT TYPE=number min="0" max="10" NAME=voto VALUE=<%=bean.getVoto()%>>
-					<%-- <INPUT TYPE=SUBMIT VALUE=Update>--%>
+					<INPUT TYPE=number min="0" max="10" class="voto" NAME=voto VALUE=<%=bean.getVoto()%>>
 				</td>
 				<td>
-					<INPUT type="hidden" name=itemID value=<%=bean.getId()%>>
-					<INPUT type="hidden" name="action" value="update">
-					<INPUT TYPE=number min="0" NAME=quantita VALUE=<%=bean.getQuantità()%>>
-					<%-- <INPUT TYPE=SUBMIT VALUE=Update>--%>
+					<INPUT TYPE=number min="0" class="quantita" NAME=quantita VALUE=<%=bean.getQuantità()%>>
 				</td>
 
 				<td>
-					<INPUT type="hidden" name="action" value="update">
-					<INPUT type="hidden" name="action" value="update"> 
-					<INPUT type="hidden" name=itemID value=<%=bean.getId()%>>
-					<INPUT type=number min="0" NAME=saldo VALUE=<%=bean.getSaldo()%>>
-					<%-- <INPUT TYPE=SUBMIT VALUE=Update>--%>
+					<INPUT type=number min="0" class="saldo" NAME=saldo VALUE=<%=bean.getSaldo()%>>
 				</td>
 
 
 				<td>
-					<INPUT type="hidden" name=itemID value=<%=bean.getId()%>>
-					<INPUT type="hidden" name="action" value="update">
-					<INPUT TYPE=date VALUE=<%=bean.getData_uscita()%>>
-					<%-- <INPUT TYPE=SUBMIT VALUE=Update>--%>
+					<INPUT TYPE=date class="data" name="data" VALUE=<%=bean.getData_uscita()%>>
 				</td>
 
 				<td>
-					<INPUT type="hidden" name=itemID value=<%=bean.getId()%>>
-					<INPUT type="hidden" name="action" value="update">
-					<INPUT TYPE=TEXT name=descrizione VALUE=<%=bean.getDescrizione()%>>
-					<%-- <INPUT TYPE=SUBMIT VALUE=Update>--%>
+					<INPUT TYPE=TEXT class="descrizione" name=descrizione VALUE=<%=bean.getDescrizione()%>>
 				</td>
 
 				<td>
-					<INPUT type="hidden" name=itemID value=<%=bean.getId()%>>
-					<INPUT TYPE=number step="any" NAME=peso VALUE=<%=bean.getPeso()%>>
-					<%-- <INPUT TYPE=SUBMIT VALUE=Update>--%>
+					<INPUT TYPE=number step="any" class=peso NAME=peso VALUE=<%=bean.getPeso()%>>
 				</td>
 					
 				<td><INPUT TYPE="checkbox" value=<%=bean.getId()%>
 					NAME="mostra" <%if (bean.isVisible()) {%> checked <%}%>>
 				</td>
 				<td>
-					<INPUT class=btn-det TYPE=SUBMIT VALUE=Update>
+					<INPUT class="btn-det" TYPE=SUBMIT VALUE="Update">
 				</td>
 				
 					
     		</tr>
+    		
     		<%
 			}
 			} else {
