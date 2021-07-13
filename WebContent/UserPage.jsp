@@ -16,65 +16,52 @@
 	ArrayList<String> metodiPagamento = (ArrayList<String>) session.getAttribute("metodi");
 	UserBean user= (UserBean) session.getAttribute("currentSessionUser");
 	%>
-<div><h3>Dati utente</h3>
 
-
-
-
+<br>
 
 <div class="user-container">
+
 	<ul>
 		<li>
 			<div class="user">
+			<h3>I miei dati</h3>
 				<div class="user-label">Nome:</div>
 				<input class="user" type="text" value=<%=user.getNome()%>>
 			</div>
 		</li>
-	</ul>
-	
-	<ul>
+		
 		<li>
 		<div class="user">
 			<div class="user-label">Cognome:</div>
 				<input class="user" type="text" value=<%=user.getCognome()%>>
 			</div>
 		</li>
-	</ul>
-	
-	<ul>
+		
 		<li>
 		<div class="user">
 			<div class="user-label">Email:</div>
 				<input class="user" type="email" value=<%=user.getEmail()%>>
 			</div>
 		</li>
-	</ul>
-	
-	<ul>
+		
 		<li>
 		<div class="user">
 			<div class="user-label">Data di nascita:</div>
 				<input class="user" type="date" value=<%=user.getData_nascita()%>>
 			</div>
 		</li>
+		
 	</ul>
-	
 </div>	
 
-</div>
-
-
-
- 	
-
-
-	<div>
-		<h3>I miei indirizzi </h3>
+	<br>
 		
 		<div class="user-container">
+		
 			<ul>
 				<li>
 					<div class="user-payment">
+					<h3>I miei indirizzi </h3>
 						<select id="indirizzo" name="indirizzo" class=select-large>
 			<%
 			if (indirizzi != null) {
@@ -101,18 +88,14 @@
 			</li>
 		</ul>
 	</div>
-</div>
 
+	<br>
 	
-	
-	
-	<div>
-		<h3>I miei metodi di pagamento</h3>
-		
-		<div class="user-container">
+	<div class="user-container">
 			<ul>
 				<li>
 					<div class="user-payment">
+					<h3>I miei metodi di pagamento</h3>
 						<select id="metodoPagamento" name="pagamento" class=select-large>
 			<%
 			if (metodiPagamento != null) {
@@ -125,7 +108,7 @@
 			}
 			} else {
 			%>
-					<option>nessun metodo di pagamento in archivio</option>
+					<option>Nessun metodo di pagamento registrato</option>
 			<%
 			}
 			%>
@@ -140,7 +123,7 @@
 			</li>
 		</ul>
 	</div>
-</div>
+
 	
 	
 	

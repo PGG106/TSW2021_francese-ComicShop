@@ -28,7 +28,7 @@ table {
 	
 }
 
-img { display:block; }
+/*img { display:block; }*/
 
 tbody td{
 	border-spacing:5px;
@@ -71,6 +71,9 @@ tbody.catalogo tr:hover {background-color: #a992d3 ;}
 	border-radius: inherit;
 }
 
+.user-container li {
+	border-bottom: 1px solid #e7e7e7;
+}
 
 .user li {
 	text-align: center;
@@ -84,7 +87,6 @@ tbody.catalogo tr:hover {background-color: #a992d3 ;}
 div.user-container {
 	margin-left: auto;
 	margin-right: auto;
-	
 	border-collapse: collapse;
 	overflow: hidden;
 	max-width: 800px;
@@ -134,6 +136,16 @@ div.user-link{
 
 .details  input[type=number], input[type=checkbox],
 select {
+	width: 90px;
+  	padding: 12px 20px;
+  	margin: 8px;
+  	display: inline-block;
+  	border: 1px solid #ccc;
+  	border-radius: 4px;
+  	box-sizing: border-box;
+}
+
+#prezzo_cat {
 	width: 90px;
   	padding: 12px 20px;
   	margin: 8px;
@@ -389,6 +401,7 @@ div.container {
   	border: 1px solid #CCC;
   	height: 34px;
 }
+
 #checkout
 {
     transition: .5s ease;
@@ -401,4 +414,70 @@ div.container {
 	margin-left:7em;
 	margin-top:1000px;
 }
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+
+.grid-container {
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: 250px 250px 250px 250px;
+    grid-row-gap: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    grid-gap: 40px;
+    justify-content: center;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding-top: 20px;
+  font-size: 20px;
+  text-align: center;
+  width: 100%!important;
+  
+}
+
+.thumbnail {
+	display: flex;
+    flex-direction: column;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.item-description {
+	margin-top: 5px;
+    margin-bottom: 100px;
+    text-align: center;
+    text-transform: none;
+    height: 30px;
+}
+
+.grid-item img:hover {
+	transform: scale(1.25);
+}
+
+@media screen and (max-width: 1140px) {
+	.grid-container {
+		grid-template-columns: repeat(3, 1fr);
+		margin-left:20px;
+		margin-right: 20px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.grid-container {
+		grid-template-columns: repeat(2, 1fr);
+		margin-left:20px;
+		margin-right: 20px;
+	}
+}
+
+
+
  

@@ -30,7 +30,83 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 	%>
 
 
-	<h2>Prodotti</h2>
+
+
+
+	<h2 style="text-align: center;">Inserisci nuovo articolo</h2>
+<div class=details>
+	<form method="post" id="a_form" action="product"></form>
+	<table>
+	
+		<thead class=details>
+		<tr>
+			<th>Id</th>
+			<th>Nome</th>
+			<th>Prezzo</th>
+			<th>Voto</th>
+			<th>Quantità</th>
+			<th>Saldo</th>
+			<th>Data di uscita</th>
+			<th>Descrizione</th>
+			<th>Peso</th>
+			<th></th>
+			<th></th>
+			</tr>
+		</thead>
+		 <tbody  class=details>
+        	<tr>
+        		<td>
+            		<input type="hidden" name="action" value="insert">
+            		<input class=details name="id" type="number" 
+            		maxlength="20" required placeholder="Inserisci ID">
+        		</td>
+        		<td>
+            		<input type="hidden" name="action" value="insert">
+            		<input class=details name="nome" type="text"
+            		maxlength="20" required placeholder="Inserisci nome">
+        		</td>
+        		<td>
+            		<input type="hidden" name="action" value="insert">
+            		<input class=details name="prezzo" type="number" min="0" value="0" required>
+        		</td>
+        		<td>
+            		<input type="hidden" name="action" value="insert">
+            		<input class=details name="voto" type="number" min="0" max="10" required>
+        		</td>
+        		<td>
+            		<input type="hidden" name="action" value="insert">
+            		<input class=details name="quant" type="number" min="1" value="1" required>
+        		</td>
+        		<td>
+            		<input type="hidden" name="action" value="insert">
+            		<input class=details name="saldo" type="number" value="0" required>
+        		</td>
+        		<td>
+            		<input type="hidden" name="action" value="insert">
+            		 <input class=details name="data" type="date" required>
+        		</td>
+        		<td>
+            		<input type="hidden" name="action" value="insert">
+            		<input class=details name="descrizione" type="text" maxlength="100" rows="3" 
+            		required placeholder="Inserisci descrizione">
+        		</td>
+        		<td>
+            		<input type="hidden" name="action" value="insert">
+            		<input class=detailso name="peso" type="number" required>
+        		</td>
+        		<td>
+        			<input class=btn-det type="submit" value="Aggiungi">
+				</td>
+				<td>
+					<input class=btn-det type="reset" value="Ripristina">
+				</td>
+        </tbody>	
+    </table>
+</div>	
+		
+
+
+<h2>Prodotti</h2>
 	 
 <div class=details>
 	
@@ -43,7 +119,7 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 			<th><a href="product?sort=nome">Nome</a></th>
 			<th><a href="product?sort=prezzo">Prezzo</a></th>
 			<th><a href="product?sort=voto">Voto</a></th>
-			<th><a href="product?sort=quantita">Quantità;</a></th>
+			<th><a href="product?sort=quantita">Quantità</a></th>
 			<th>Saldo</th>
 			<th>Data di uscita</th>
 			<th>Descrizione</th>
@@ -77,7 +153,7 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 				<td>
 					<INPUT type="hidden" name=itemID value=<%=bean.getId()%>>
 					<INPUT type="hidden" name="action" value="update">
-					<INPUT TYPE=number step="any" NAME=prezzo VALUE=<%=bean.getPrezzo()%>>
+					<INPUT id=prezzo_cat TYPE=text step="any" NAME=prezzo VALUE=<%=String.format("%.2f", bean.getPrezzo())%>>
 					<%-- <INPUT TYPE=SUBMIT VALUE=Update>--%>
 				</td>
 				<td>
@@ -154,78 +230,6 @@ if (session == null || session.getAttribute("currentSessionUser") == null) {
 
 
 
-
-	<h2 style="text-align: center;">Inserisci nuovo articolo</h2>
-<div class=details>
-	<form method="post" id="a_form" action="product"></form>
-	<table>
-	
-		<thead class=details>
-		<tr>
-			<th>Id</th>
-			<th>Nome</th>
-			<th>Prezzo</th>
-			<th>Voto</th>
-			<th>Quantità;</th>
-			<th>Saldo</th>
-			<th>Data di uscita</th>
-			<th>Descrizione</th>
-			<th>Peso</th>
-			<th></th>
-			<th></th>
-			</tr>
-		</thead>
-		 <tbody  class=details>
-        	<tr>
-        		<td>
-            		<input type="hidden" name="action" value="insert">
-            		<input class=details name="id" type="number" 
-            		maxlength="20" required placeholder="Inserisci ID">
-        		</td>
-        		<td>
-            		<input type="hidden" name="action" value="insert">
-            		<input class=details name="nome" type="text"
-            		maxlength="20" required placeholder="Inserisci nome">
-        		</td>
-        		<td>
-            		<input type="hidden" name="action" value="insert">
-            		<input class=details name="prezzo" type="number" min="0" value="0" required>
-        		</td>
-        		<td>
-            		<input type="hidden" name="action" value="insert">
-            		<input class=details name="voto" type="number" min="0" max="10" required>
-        		</td>
-        		<td>
-            		<input type="hidden" name="action" value="insert">
-            		<input class=details name="quant" type="number" min="1" value="1" required>
-        		</td>
-        		<td>
-            		<input type="hidden" name="action" value="insert">
-            		<input class=details name="saldo" type="number" value="0" required>
-        		</td>
-        		<td>
-            		<input type="hidden" name="action" value="insert">
-            		 <input class=details name="data" type="date" required>
-        		</td>
-        		<td>
-            		<input type="hidden" name="action" value="insert">
-            		<input class=details name="descrizione" type="text" maxlength="100" rows="3" 
-            		required placeholder="Inserisci descrizione">
-        		</td>
-        		<td>
-            		<input type="hidden" name="action" value="insert">
-            		<input class=detailso name="peso" type="number" required>
-        		</td>
-        		<td>
-        			<input class=btn-det type="submit" value="Aggiungi">
-				</td>
-				<td>
-					<input class=btn-det type="reset" value="Ripristina">
-				</td>
-        </tbody>	
-    </table>
-</div>	
-		
 
 
 </body>
