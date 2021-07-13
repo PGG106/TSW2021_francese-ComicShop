@@ -21,7 +21,7 @@
 				</div>
 				<ul class="nav-list">
 
-					<li>
+			<%-- 		<li>
 						<div class="search">
 							<form action="search" id="searchform" method="get">
 							<input type="search" name="search" placeholder="Cerca..." />
@@ -29,9 +29,9 @@
 						</div>
 						
 					</li>
-
+--%>
 				
-					<li class="nav-right"><a href="#!">Ciao,Accedi</a>
+					<li class="nav-right"><a href="#!">Ciao, Accedi</a>
 						<ul class="nav-dropdown">
 							<li><a href="./loginPage.jsp">Accedi</a></li>
 							<li><a href="./UserPage">Il mio account</a></li>

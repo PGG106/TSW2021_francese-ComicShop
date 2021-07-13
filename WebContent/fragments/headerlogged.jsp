@@ -22,12 +22,14 @@
 				</div>
 				<ul class="nav-list">
 
+			<%-- 
+
 					<li>
 						<form action="" id="searchform" method="get">
 							<input type="search" name="search" placeholder="Cerca..." />
 						</form>
 					</li>
-
+--%>
 					<li><a href="#!">Ciao, <%=((UserBean) session.getAttribute("currentSessionUser")).getNome()%>
 					</a>
 						<ul class="nav-dropdown">

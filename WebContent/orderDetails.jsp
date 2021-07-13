@@ -39,11 +39,11 @@ LinkedList<ContentBean> products = (LinkedList<ContentBean>) session.getAttribut
 		<table>
 			<thead class=details>
 				<tr>
-					<th>numero_ordine</th>
-					<th>costo_totale</th>
-					<th>indirizzo_spedizione</th>
-					<th>data_ordine</th>
-					<th>data_spedizione</th>
+					<th>Numero ordine</th>
+					<th>Costo totale</th>
+					<th>Indirizzo di spedizione</th>
+					<th>Data ordine</th>
+					<th>Data di spedizione</th>
 
 				</tr>
 			</thead>
