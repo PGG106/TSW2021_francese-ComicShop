@@ -153,6 +153,47 @@ public class UserDAO {
 		
 		}
 	}
+	
+	public synchronized void Alter(String username, UserBean user) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		String alterStatement = "UPDATE `comicshop`.`utente` SET `nome` = ?, `cognome` = ?, "
+				+ "`email` = ?,  `data_nascita` = ? "
+				+ " WHERE (`username` = ? ) ";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(alterStatement);
+			preparedStatement.setString(1, user.getNome());
+			preparedStatement.setString(2, user.getCognome());
+			preparedStatement.setString(3, user.getEmail());
+			preparedStatement.setDate(4, Date.valueOf(user.getData_nascita()));
+			preparedStatement.setString(5, username);
+			System.out.print(preparedStatement);
+			
+			preparedStatement.executeUpdate();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			
+				if (connection != null)
+					connection.close();
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+	}
+	}
+	
+	
+	
 }
 	
 

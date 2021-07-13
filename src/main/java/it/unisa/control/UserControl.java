@@ -1,6 +1,10 @@
 package it.unisa.control;
 
 import java.io.IOException;
+import javax.servlet.http.HttpSession;
+
+import com.mysql.cj.Session;
+
 import java.time.LocalDate;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,12 +21,13 @@ import it.unisa.model.*;
 public class UserControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static UserDAO UserDAO = new UserDAO();
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public UserControl() {
 		super();
-		
+
 	}
 
 	/**
@@ -31,6 +36,7 @@ public class UserControl extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		String username = request.getParameter("usr");
 		String nome = request.getParameter("nome");
 		String cognome = request.getParameter("cogn");
@@ -38,8 +44,8 @@ public class UserControl extends HttpServlet {
 		String password = request.getParameter("pwd");
 		String num_telefono = request.getParameter("num_tel");
 		String paese_residenza = request.getParameter("paese");
-		LocalDate data_nascita=LocalDate.parse(request.getParameter("data"));
-		UserBean user= new UserBean();
+		LocalDate data_nascita = LocalDate.parse(request.getParameter("data"));
+		UserBean user = new UserBean();
 		user.setUsername(username);
 		user.setNome(nome);
 		user.setCognome(cognome);
@@ -49,7 +55,7 @@ public class UserControl extends HttpServlet {
 		user.setPaese_residenza(paese_residenza);
 		user.setData_nascita(data_nascita);
 		UserDAO.doSave(user);
-		
+
 		response.sendRedirect("loginPage.jsp");
 	}
 
@@ -59,7 +65,7 @@ public class UserControl extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		doGet(request, response);
 	}
 

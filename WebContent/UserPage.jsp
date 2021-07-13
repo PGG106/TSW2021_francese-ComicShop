@@ -20,38 +20,45 @@
 <br>
 
 <div class="user-container">
-
+<form action="UserUpdate">
 	<ul>
 		<li>
 			<div class="user">
 			<h3>I miei dati</h3>
 				<div class="user-label">Nome:</div>
-				<input class="user" type="text" value=<%=user.getNome()%>>
+				<input class="user" name=nome type="text" value=<%=user.getNome()%>>
 			</div>
 		</li>
 		
 		<li>
 		<div class="user">
 			<div class="user-label">Cognome:</div>
-				<input class="user" type="text" value=<%=user.getCognome()%>>
+				<input class="user" name=cognome type="text" value=<%=user.getCognome()%>>
 			</div>
 		</li>
 		
 		<li>
 		<div class="user">
 			<div class="user-label">Email:</div>
-				<input class="user" type="email" value=<%=user.getEmail()%>>
+				<input class="user" name=email  type="email" value=<%=user.getEmail()%>>
 			</div>
 		</li>
 		
 		<li>
 		<div class="user">
 			<div class="user-label">Data di nascita:</div>
-				<input class="user" type="date" value=<%=user.getData_nascita()%>>
+				<input class="user" name=data type="date" value=<%=user.getData_nascita()%>>
 			</div>
 		</li>
-		
+		<li>
+		<div class="user">
+			<div class="user-label"></div>
+			<input type="hidden" name=action value=update>
+				<input type="submit" value=Salva>
+			</div>
+		</li>
 	</ul>
+	</form>
 </div>	
 
 	<br>
